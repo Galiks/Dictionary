@@ -1,0 +1,12 @@
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csprojResolveAssemblyReference.cache
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.GenerateResource.Cache
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.MainForm.resources
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.OutputDictcs.resources
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.WordStatictics.resources
