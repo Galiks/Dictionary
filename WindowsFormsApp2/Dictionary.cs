@@ -18,8 +18,6 @@ namespace WindowsFormsApp2
             get { return Dict.Count; }
         }
 
-       
-
         public static void AddToDict(string name) // добавление в словарь
         {
             using (StreamReader file = new StreamReader(name))

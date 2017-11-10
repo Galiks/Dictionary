@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -143,6 +144,20 @@ namespace WindowsFormsApp2
         private void Game_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Hint_Click(object sender, EventArgs e) //import Tkinter, m = Tkinter.Tk()
+        {
+            //RandomWordInRichTextBox
+            string FileName = "fox";
+            Image img = Image.FromFile(@"Pictures\" + FileName + ".jpg");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Image = img;
         }
     }
 }
