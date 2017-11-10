@@ -10,3 +10,4 @@ E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.
 E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.MainForm.resources
 E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.OutputDictcs.resources
 E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.WordStatictics.resources
+E:\WindowsFormsApp3\WindowsFormsApp\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Game.resources

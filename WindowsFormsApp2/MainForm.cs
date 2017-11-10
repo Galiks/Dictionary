@@ -13,8 +13,6 @@ namespace WindowsFormsApp2
     public partial class MainForm : Form
     {
 
-        
-
         Form OutDict = new OutputDictcs();
 
         private WordStatictics WS = new WordStatictics();
@@ -31,7 +29,11 @@ namespace WindowsFormsApp2
             {
                 f1.Show();
             }
-            else MessageBox.Show("Выберите словарь!");
+            else
+            {
+                label3.Text = "Выберите словарь!";
+                label3.ForeColor = Color.DarkRed;
+            }
         }
 
         private void AnimalsDict_Click(object sender, EventArgs e)
@@ -39,7 +41,8 @@ namespace WindowsFormsApp2
             Dictionary.Dict.Clear();
             string ChooseDict = "Animals.txt";
             Dictionary.AddToDict(ChooseDict);
-            MessageBox.Show("В словарь добавлены слова на тему: животные");
+            label3.Text = "В словарь добавлены слова на тему: животные";
+            label3.ForeColor = Color.Green;
         }
 
         private void Hobby_Click(object sender, EventArgs e)
@@ -47,7 +50,8 @@ namespace WindowsFormsApp2
             Dictionary.Dict.Clear();
             string ChooseDict = "Hobby.txt";
             Dictionary.AddToDict(ChooseDict);
-            MessageBox.Show("В словарь добавлены слова на тему: хобби");
+            label3.Text = "В словарь добавлены слова на тему: хобби";
+            label3.ForeColor = Color.Green;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,6 +70,25 @@ namespace WindowsFormsApp2
         private void Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Game_Click(object sender, EventArgs e)
+        {
+            Form gaming = new Game();
+            if (Dictionary.Dict.Count != 0)
+            {
+                gaming.Show();
+            }
+            else
+            {
+                label3.Text = "Выберите словарь!";
+                label3.ForeColor = Color.DarkRed;
+            }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

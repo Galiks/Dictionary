@@ -24,7 +24,7 @@ namespace WindowsFormsApp2
 
         private void AddText()
         {
-            RandomWordInRichTextBox = Dictionary.RandomWordOfDictionary();
+            RandomWordInRichTextBox = Dictionary.RusRandomWordOfDictionary();
             richTextBox1.Text = "Введите перевод слова: " + RandomWordInRichTextBox;
         }
 
@@ -50,29 +50,51 @@ namespace WindowsFormsApp2
 
                     if (UserWord == OriginalWord)
                     {
-                        MessageBox.Show("That's good, keep it up!");
+                        //MessageBox.Show("That's good, keep it up!");
                         WS.CheckWordFromForm1(OriginalWord);
+                        label1.Text = "Right!";
+                        label1.ForeColor = Color.Green;
+                        label1.Refresh();
                     }
                     else if (UserWord.Length == OriginalWord.Length)
                     {
                         if (MistakeCounter(UserWord, OriginalWord) == 1)
-                            MessageBox.Show("So close;) Try again.");
+                        {
+                            label1.Text = "So close ;) Try again.";
+                            label1.ForeColor = Color.Yellow;
+                        }
                     }
                     else if (Math.Abs(UserWord.Length - OriginalWord.Length) == 1)
                     {
                         if (UserWord.Substring(1) == OriginalWord ||
                             UserWord.Substring(0, Math.Min(OriginalWord.Length, UserWord.Length)) == OriginalWord.Substring(0, OriginalWord.Length - 1))
-                            MessageBox.Show("So close;) Try again.");
+                        {
+                            label1.Text = "So close ;) Try again.";
+                            label1.ForeColor = Color.YellowGreen;
+                        }
                         else
-                            MessageBox.Show("Wrong! Try another word");
+                        {
+                            label1.Text = "Wrong! Try another word.";
+                            label1.ForeColor = Color.Red;
+                        }
                     }
                     else
-                        MessageBox.Show("Wrong! Try another word");
+                    {
+                        label1.Text = "Wrong! Try another word.";
+                        label1.ForeColor = Color.Red;
+                    }
                 }
-                else MessageBox.Show("Введите перевод слова");
+                else
+                {
+                    label1.Text = "Введите перевод слова";
+                    label1.ForeColor = Color.Black;
+                }
             }
             else if (richTextBox1.TextLength == 0)
-                MessageBox.Show("Нажмите кнопку 'Начать'");
+            {
+                label1.Text = "Нажмите кнопку 'Начать'";
+                label1.ForeColor = Color.Black;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -82,6 +104,7 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            label1.Text = "";
             AddText();
             //добавить кнопку далее. Максим хочет чтобы она переименовывалась. 
             //Тогда надо переставить метод AddItemsToCheckedListBox в другое место, чтобы параметры не слетали
@@ -98,6 +121,7 @@ namespace WindowsFormsApp2
                 richTextBox1.Clear();
                 textBox1.Clear();
                 WS.ClearCheckedListBox();
+                label1.Text = "";
                 Start.Text = "Начать";
                 Hide();
             }
@@ -114,6 +138,11 @@ namespace WindowsFormsApp2
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -18,15 +18,7 @@ namespace WindowsFormsApp2
             get { return Dict.Count; }
         }
 
-        //public static bool[] CheckWord = new bool[Size]; // массив для того, чтобы можно бло отслеживать какие слова пользователь запомнил, а какие нет
-
-        //private static void FillCheckWordFalse() // заполняет массив значениями false, потому что ещё не начали вводить слова.
-        //{
-        //    for (int i = 0; i < CheckWord.Length; i ++)
-        //    {
-        //        CheckWord[i] = false;
-        //    }
-        //}
+       
 
         public static void AddToDict(string name) // добавление в словарь
         {
@@ -62,7 +54,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        public static string RandomWordOfDictionary() // рандомный выбор слова из словаря Dict
+        public static string RusRandomWordOfDictionary() // рандомный выбор слова из словаря Dict
         {
             Random random = new Random();
             int cont = random.Next(0, Size);
@@ -70,6 +62,17 @@ namespace WindowsFormsApp2
             List<string> keys = Dict.Keys.ToList();
             RandomWord = keys[cont];
             string list = values[cont];
+            return list;
+        }
+
+        public static string EngRandomWordOfDictionary() // рандомный выбор слова из словаря Dict
+        {
+            Random random = new Random();
+            int cont = random.Next(0, Size);
+            List<string> values = Dict.Values.ToList();
+            List<string> keys = Dict.Keys.ToList();
+            RandomWord = values[cont];
+            string list = keys[cont];
             return list;
         }
     }

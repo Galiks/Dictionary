@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OutputDictcs));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.OutPut = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -65,6 +66,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.OutPut);
             this.Controls.Add(this.richTextBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OutputDictcs";
             this.Text = "OutputDictcs";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OutputDictcs_FormClosing);

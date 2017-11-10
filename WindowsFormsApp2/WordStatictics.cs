@@ -138,5 +138,10 @@ namespace WindowsFormsApp2
             }
             else MessageBox.Show("You haven't saves");
         }
+
+        private void WordStatictics_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

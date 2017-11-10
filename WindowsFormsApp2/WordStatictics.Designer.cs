@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WordStatictics));
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.TestButton = new System.Windows.Forms.Button();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
@@ -86,9 +87,11 @@
             this.Controls.Add(this.checkedListBox2);
             this.Controls.Add(this.TestButton);
             this.Controls.Add(this.checkedListBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WordStatictics";
             this.Text = "WordStatictics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WordStatictics_FormClosing);
+            this.Load += new System.EventHandler(this.WordStatictics_Load);
             this.ResumeLayout(false);
 
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Texting = new System.Windows.Forms.Button();
@@ -35,6 +36,8 @@
             this.Hobby = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
+            this.Game = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +68,7 @@
             // Texting
             // 
             this.Texting.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Texting.Location = new System.Drawing.Point(107, 146);
+            this.Texting.Location = new System.Drawing.Point(12, 146);
             this.Texting.Name = "Texting";
             this.Texting.Size = new System.Drawing.Size(75, 23);
             this.Texting.TabIndex = 2;
@@ -113,12 +116,33 @@
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // Game
+            // 
+            this.Game.Location = new System.Drawing.Point(214, 146);
+            this.Game.Name = "Game";
+            this.Game.Size = new System.Drawing.Size(75, 23);
+            this.Game.TabIndex = 7;
+            this.Game.Text = "Игра";
+            this.Game.UseVisualStyleBackColor = true;
+            this.Game.Click += new System.EventHandler(this.Game_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(130, 201);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "label3";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 287);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Game);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Hobby);
@@ -126,9 +150,11 @@
             this.Controls.Add(this.Texting);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Словарь-тренер";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,5 +169,7 @@
         private System.Windows.Forms.Button Hobby;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Exit;
+        private System.Windows.Forms.Button Game;
+        private System.Windows.Forms.Label label3;
     }
 }
