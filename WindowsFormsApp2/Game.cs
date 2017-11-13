@@ -14,8 +14,6 @@ namespace WindowsFormsApp2
     public partial class Game : Form
     {
 
-
-
         private WordStatictics WS = new WordStatictics();
 
         private string RandomWordInRichTextBox;
@@ -42,14 +40,14 @@ namespace WindowsFormsApp2
 
             for (int i = 0; i < BrokenWord.Length; i++)
             {
-                if (BrokenWord.Length == 3)
+                if (BrokenWord.Length <= 4)
                 {
-                    if (i == 2)
+                    if (i == 1)
                     {
                         BrokenWord[i] = '*';
                     }
                 }
-                if(BrokenWord.Length > 3)
+                if(BrokenWord.Length > 4)
                 {
                     if( i % 3 == 0)
                     {
@@ -72,9 +70,15 @@ namespace WindowsFormsApp2
         private void Begin_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-            label1.Text = "";
+            textBox1.Clear();
             AddText();
             Begin.Text = "Далее";
+            label2.Text = "";
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Dispose();
+                pictureBox1.Image = null;
+            }
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -99,7 +103,6 @@ namespace WindowsFormsApp2
 
                     if (UserWord == OriginalWord)
                     {
-                        //MessageBox.Show("That's good, keep it up!");
                         WS.CheckWordFromForm1(OriginalWord);
                         label2.Text = "Right!";
                         label2.ForeColor = Color.Green;
@@ -108,23 +111,42 @@ namespace WindowsFormsApp2
                     else if (UserWord.Length == OriginalWord.Length)
                     {
                         if (MistakeCounter(UserWord, OriginalWord) == 1)
-                            MessageBox.Show("So close;) Try again.");
+                        {
+                            label1.Text = "So close ;) Try again.";
+                            label1.ForeColor = Color.Yellow;
+                        }
                     }
                     else if (Math.Abs(UserWord.Length - OriginalWord.Length) == 1)
                     {
                         if (UserWord.Substring(1) == OriginalWord ||
                             UserWord.Substring(0, Math.Min(OriginalWord.Length, UserWord.Length)) == OriginalWord.Substring(0, OriginalWord.Length - 1))
-                            MessageBox.Show("So close;) Try again.");
+                        {
+                            label1.Text = "So close ;) Try again.";
+                            label1.ForeColor = Color.YellowGreen;
+                        }
                         else
-                            MessageBox.Show("Wrong! Try another word");
+                        {
+                            label1.Text = "Wrong! Try another word.";
+                            label1.ForeColor = Color.Red;
+                        }
                     }
                     else
-                        MessageBox.Show("Wrong! Try another word");
+                    {
+                        label1.Text = "Wrong! Try another word.";
+                        label1.ForeColor = Color.Red;
+                    }
                 }
-                else MessageBox.Show("Введите перевод слова");
+                else
+                {
+                    label1.Text = "Введите слово";
+                    label1.ForeColor = Color.Black;
+                }
             }
             else if (richTextBox1.TextLength == 0)
-                MessageBox.Show("Нажмите кнопку 'Начать'");
+            {
+                label1.Text = "Нажмите кнопку 'Начать'";
+                label1.ForeColor = Color.Black;
+            }
         }
 
         private void Game_FormClosing(object sender, FormClosingEventArgs e)
@@ -138,12 +160,17 @@ namespace WindowsFormsApp2
                 WS.ClearCheckedListBox();
                 Begin.Text = "Начать";
                 Hide();
+                if (pictureBox1.Image != null)
+                {
+                    pictureBox1.Image.Dispose();
+                    pictureBox1.Image = null;
+                }
             }
         }
 
         private void Game_Load(object sender, EventArgs e)
         {
-            
+            label2.Text = "";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -154,8 +181,8 @@ namespace WindowsFormsApp2
         private void Hint_Click(object sender, EventArgs e) //import Tkinter, m = Tkinter.Tk()
         {
             //RandomWordInRichTextBox
-            string FileName = "fox";
-            Image img = Image.FromFile(@"Pictures\" + FileName + ".jpg");
+            string FileName = RandomWordInRichTextBox;
+            Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Image = img;
         }

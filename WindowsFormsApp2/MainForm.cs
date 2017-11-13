@@ -88,7 +88,21 @@ namespace WindowsFormsApp2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            label3.Text = "";
+        }
 
+        private void Images_Click(object sender, EventArgs e)
+        {
+            Form imagesGame = new Images();
+            if (Dictionary.Dict.Count != 0)
+            {
+                imagesGame.Show();
+            }
+            else
+            {
+                label3.Text = "Выберите словарь!";
+                label3.ForeColor = Color.DarkRed;
+            }
         }
     }
 }

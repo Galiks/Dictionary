@@ -38,6 +38,7 @@
             this.Exit = new System.Windows.Forms.Button();
             this.Game = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.Images = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -135,12 +136,23 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "label3";
             // 
+            // Images
+            // 
+            this.Images.Location = new System.Drawing.Point(113, 146);
+            this.Images.Name = "Images";
+            this.Images.Size = new System.Drawing.Size(75, 23);
+            this.Images.TabIndex = 9;
+            this.Images.Text = "Картинки";
+            this.Images.UseVisualStyleBackColor = true;
+            this.Images.Click += new System.EventHandler(this.Images_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 287);
             this.ControlBox = false;
+            this.Controls.Add(this.Images);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Game);
             this.Controls.Add(this.Exit);
@@ -171,5 +183,6 @@
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.Button Game;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Images;
     }
 }
