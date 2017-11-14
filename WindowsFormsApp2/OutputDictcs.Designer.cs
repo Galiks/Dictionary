@@ -57,7 +57,12 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.DefaultExt = "\"*.txt\"";
+            this.openFileDialog1.Filter = "Text files (*.txt)|*.txt";
+            this.openFileDialog1.FilterIndex = 2;
+            this.openFileDialog1.InitialDirectory = "Pictures\\Animals\\";
+            this.openFileDialog1.RestoreDirectory = true;
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // OutputDictcs
             // 

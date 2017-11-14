@@ -43,6 +43,7 @@
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(12, 24);
             this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.checkedListBox1.Size = new System.Drawing.Size(115, 184);
             this.checkedListBox1.TabIndex = 0;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
@@ -65,6 +66,7 @@
             this.checkedListBox2.FormattingEnabled = true;
             this.checkedListBox2.Location = new System.Drawing.Point(157, 24);
             this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.checkedListBox2.Size = new System.Drawing.Size(115, 184);
             this.checkedListBox2.TabIndex = 2;
             // 

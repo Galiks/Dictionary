@@ -34,6 +34,12 @@ namespace WindowsFormsApp2
             Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Image = img;
+            Start.Text = "Далее";
+
+            //Очистка лейбла и текстбокса
+            textBox1.Text = "";
+            label1.Text = "";
+            
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -68,7 +74,7 @@ namespace WindowsFormsApp2
                         if (MistakeCounter(UserWord, OriginalWord) == 1)
                         {
                             label1.Text = "So close ;) Try again.";
-                            label1.ForeColor = Color.Yellow;
+                            label1.ForeColor = Color.Blue;
                         }
                     }
                     else if (Math.Abs(UserWord.Length - OriginalWord.Length) == 1)
@@ -77,7 +83,7 @@ namespace WindowsFormsApp2
                             UserWord.Substring(0, Math.Min(OriginalWord.Length, UserWord.Length)) == OriginalWord.Substring(0, OriginalWord.Length - 1))
                         {
                             label1.Text = "So close ;) Try again.";
-                            label1.ForeColor = Color.YellowGreen;
+                            label1.ForeColor = Color.Blue;
                         }
                         else
                         {

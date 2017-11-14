@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Images));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Start = new System.Windows.Forms.Button();
             this.Answer = new System.Windows.Forms.Button();
@@ -90,6 +91,7 @@
             this.Controls.Add(this.Answer);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Images";
             this.Text = "Images";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Images_FormClosing);

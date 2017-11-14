@@ -60,5 +60,10 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

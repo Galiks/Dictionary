@@ -69,6 +69,9 @@ namespace WindowsFormsApp2
 
         private void Begin_Click(object sender, EventArgs e)
         {
+            timer1.Interval = 120000;
+            timer1.Start();
+            if (timer1.Tick <= 0)
             richTextBox1.Clear();
             textBox1.Clear();
             AddText();
@@ -112,8 +115,8 @@ namespace WindowsFormsApp2
                     {
                         if (MistakeCounter(UserWord, OriginalWord) == 1)
                         {
-                            label1.Text = "So close ;) Try again.";
-                            label1.ForeColor = Color.Yellow;
+                            label2.Text = "So close ;) Try again.";
+                            label2.ForeColor = Color.Blue;
                         }
                     }
                     else if (Math.Abs(UserWord.Length - OriginalWord.Length) == 1)
@@ -121,31 +124,31 @@ namespace WindowsFormsApp2
                         if (UserWord.Substring(1) == OriginalWord ||
                             UserWord.Substring(0, Math.Min(OriginalWord.Length, UserWord.Length)) == OriginalWord.Substring(0, OriginalWord.Length - 1))
                         {
-                            label1.Text = "So close ;) Try again.";
-                            label1.ForeColor = Color.YellowGreen;
+                            label2.Text = "So close ;) Try again.";
+                            label2.ForeColor = Color.Blue;
                         }
                         else
                         {
-                            label1.Text = "Wrong! Try another word.";
-                            label1.ForeColor = Color.Red;
+                            label2.Text = "Wrong! Try another word.";
+                            label2.ForeColor = Color.Red;
                         }
                     }
                     else
                     {
-                        label1.Text = "Wrong! Try another word.";
-                        label1.ForeColor = Color.Red;
+                        label2.Text = "Wrong! Try another word.";
+                        label2.ForeColor = Color.Red;
                     }
                 }
                 else
                 {
-                    label1.Text = "Введите слово";
-                    label1.ForeColor = Color.Black;
+                    label2.Text = "Введите слово";
+                    label2.ForeColor = Color.Black;
                 }
             }
             else if (richTextBox1.TextLength == 0)
             {
-                label1.Text = "Нажмите кнопку 'Начать'";
-                label1.ForeColor = Color.Black;
+                label2.Text = "Нажмите кнопку 'Начать'";
+                label2.ForeColor = Color.Black;
             }
         }
 
@@ -157,6 +160,7 @@ namespace WindowsFormsApp2
                 Dictionary.Dict.Clear();
                 richTextBox1.Clear();
                 textBox1.Clear();
+                label2.Text = "";
                 WS.ClearCheckedListBox();
                 Begin.Text = "Начать";
                 Hide();
@@ -181,10 +185,22 @@ namespace WindowsFormsApp2
         private void Hint_Click(object sender, EventArgs e) //import Tkinter, m = Tkinter.Tk()
         {
             //RandomWordInRichTextBox
-            string FileName = RandomWordInRichTextBox;
-            Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.Image = img;
+            try
+            {
+                string FileName = RandomWordInRichTextBox;
+                Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Image = img;
+            }
+            catch(FileNotFoundException)
+            {
+                label2.Text = "Нажмите кнопку 'Начать'";
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

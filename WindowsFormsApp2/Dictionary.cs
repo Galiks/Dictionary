@@ -52,7 +52,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        public static string RusRandomWordOfDictionary() // рандомный выбор слова из словаря Dict
+        public static string RusRandomWordOfDictionary() // рандомный выбор РУССКОГО слова из словаря Dict
         {
             Random random = new Random();
             int cont = random.Next(0, Size);
@@ -63,7 +63,7 @@ namespace WindowsFormsApp2
             return list;
         }
 
-        public static string EngRandomWordOfDictionary() // рандомный выбор слова из словаря Dict
+        public static string EngRandomWordOfDictionary() // рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
         {
             Random random = new Random();
             int cont = random.Next(0, Size);

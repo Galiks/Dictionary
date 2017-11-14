@@ -61,7 +61,7 @@ namespace WindowsFormsApp2
                         if (MistakeCounter(UserWord, OriginalWord) == 1)
                         {
                             label1.Text = "So close ;) Try again.";
-                            label1.ForeColor = Color.Yellow;
+                            label1.ForeColor = Color.Blue;
                         }
                     }
                     else if (Math.Abs(UserWord.Length - OriginalWord.Length) == 1)
@@ -70,7 +70,7 @@ namespace WindowsFormsApp2
                             UserWord.Substring(0, Math.Min(OriginalWord.Length, UserWord.Length)) == OriginalWord.Substring(0, OriginalWord.Length - 1))
                         {
                             label1.Text = "So close ;) Try again.";
-                            label1.ForeColor = Color.YellowGreen;
+                            label1.ForeColor = Color.Blue;
                         }
                         else
                         {
@@ -106,8 +106,7 @@ namespace WindowsFormsApp2
         {
             label1.Text = "";
             AddText();
-            //добавить кнопку далее. Максим хочет чтобы она переименовывалась. 
-            //Тогда надо переставить метод AddItemsToCheckedListBox в другое место, чтобы параметры не слетали
+            textBox1.Text = "";
             Start.Text = "Далее";
         }
 
