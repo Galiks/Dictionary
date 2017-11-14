@@ -14,6 +14,8 @@ namespace WindowsFormsApp2
     public partial class Game : Form
     {
 
+        private int time; // переменная, используемая для того, чтобы задать время
+
         private WordStatictics WS = new WordStatictics();
 
         private string RandomWordInRichTextBox;
@@ -69,9 +71,6 @@ namespace WindowsFormsApp2
 
         private void Begin_Click(object sender, EventArgs e)
         {
-            timer1.Interval = 120000;
-            timer1.Start();
-            if (timer1.Tick <= 0)
             richTextBox1.Clear();
             textBox1.Clear();
             AddText();
@@ -82,6 +81,7 @@ namespace WindowsFormsApp2
                 pictureBox1.Image.Dispose();
                 pictureBox1.Image = null;
             }
+            timer1.Start();
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -200,7 +200,14 @@ namespace WindowsFormsApp2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            time++;
+            if (time == 120)
+            {
+                timer1.Stop();
+                MessageBox.Show("Time down");
+                time = 0;
+                Begin.PerformClick();
+            }
         }
     }
 }

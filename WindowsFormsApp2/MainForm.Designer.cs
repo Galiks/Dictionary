@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +40,10 @@
             this.Game = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Images = new System.Windows.Forms.Button();
+            this.UserDictionary = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -153,6 +158,31 @@
             this.Images.UseVisualStyleBackColor = true;
             this.Images.Click += new System.EventHandler(this.Images_Click);
             // 
+            // UserDictionary
+            // 
+            this.UserDictionary.Location = new System.Drawing.Point(102, 40);
+            this.UserDictionary.Name = "UserDictionary";
+            this.UserDictionary.Size = new System.Drawing.Size(95, 41);
+            this.UserDictionary.TabIndex = 10;
+            this.UserDictionary.Text = "Словарь пользователя";
+            this.toolTip1.SetToolTip(this.UserDictionary, resources.GetString("UserDictionary.ToolTip"));
+            this.UserDictionary.UseVisualStyleBackColor = true;
+            this.UserDictionary.Click += new System.EventHandler(this.UserDictionary_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "\"*.txt\"";
+            this.openFileDialog1.Filter = "Text files (*.txt)|*.txt";
+            this.openFileDialog1.InitialDirectory = "Pictures\\User Dictionary\\";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +190,7 @@
             this.CancelButton = this.Exit;
             this.ClientSize = new System.Drawing.Size(301, 287);
             this.ControlBox = false;
+            this.Controls.Add(this.UserDictionary);
             this.Controls.Add(this.Images);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Game);
@@ -192,5 +223,9 @@
         private System.Windows.Forms.Button Game;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Images;
+        private System.Windows.Forms.Button UserDictionary;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,8 @@ namespace WindowsFormsApp2
             Dictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: животные";
             label3.ForeColor = Color.Green;
+            Images.Enabled = true;
+            Game.Enabled = true;
         }
 
         private void Hobby_Click(object sender, EventArgs e)
@@ -52,6 +55,8 @@ namespace WindowsFormsApp2
             Dictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: хобби";
             label3.ForeColor = Color.Green;
+            Images.Enabled = true;
+            Game.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,6 +108,29 @@ namespace WindowsFormsApp2
                 label3.Text = "Выберите словарь!";
                 label3.ForeColor = Color.DarkRed;
             }
+        }
+
+        private void UserDictionary_Click(object sender, EventArgs e)
+        {
+            Dictionary.Dict.Clear();
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                using (StreamReader fileRead = new StreamReader(openFileDialog1.FileName))
+                {
+                    while (fileRead.Peek() > -1)
+                    {
+                        string[] line = fileRead.ReadLine().Split(',');
+                        for (int i = 0; i < line.Length - 1; i++)
+                        {
+                            if (!Dictionary.Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
+                                Dictionary.Dict.Add(line[i], line[i + 1]);
+                        }
+                    }
+                    fileRead.Close();
+                }
+            }
+            Images.Enabled = false;
+            Game.Enabled = false;
         }
     }
 }
