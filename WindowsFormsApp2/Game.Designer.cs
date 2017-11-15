@@ -39,6 +39,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Hint = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.StopTime = new System.Windows.Forms.Button();
+            this.ShowWordStatics = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +92,7 @@
             // Answer
             // 
             this.Answer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Answer.Location = new System.Drawing.Point(262, 297);
+            this.Answer.Location = new System.Drawing.Point(178, 297);
             this.Answer.Name = "Answer";
             this.Answer.Size = new System.Drawing.Size(75, 23);
             this.Answer.TabIndex = 4;
@@ -100,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(130, 111);
+            this.label2.Location = new System.Drawing.Point(12, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -119,7 +122,7 @@
             // Hint
             // 
             this.Hint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Hint.Location = new System.Drawing.Point(133, 297);
+            this.Hint.Location = new System.Drawing.Point(93, 297);
             this.Hint.Name = "Hint";
             this.Hint.Size = new System.Drawing.Size(75, 23);
             this.Hint.TabIndex = 7;
@@ -133,12 +136,45 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(231, 109);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(35, 13);
+            this.timeLabel.TabIndex = 8;
+            this.timeLabel.Text = "label3";
+            this.timeLabel.Click += new System.EventHandler(this.timeLabel_Click);
+            // 
+            // StopTime
+            // 
+            this.StopTime.Location = new System.Drawing.Point(137, 104);
+            this.StopTime.Name = "StopTime";
+            this.StopTime.Size = new System.Drawing.Size(88, 23);
+            this.StopTime.TabIndex = 9;
+            this.StopTime.Text = "Стоп";
+            this.StopTime.UseVisualStyleBackColor = true;
+            this.StopTime.Click += new System.EventHandler(this.StopTime_Click);
+            // 
+            // ShowWordStatics
+            // 
+            this.ShowWordStatics.Location = new System.Drawing.Point(262, 298);
+            this.ShowWordStatics.Name = "ShowWordStatics";
+            this.ShowWordStatics.Size = new System.Drawing.Size(75, 22);
+            this.ShowWordStatics.TabIndex = 10;
+            this.ShowWordStatics.Text = "Статистика";
+            this.ShowWordStatics.UseVisualStyleBackColor = true;
+            this.ShowWordStatics.Click += new System.EventHandler(this.ShowWordStatics_Click);
+            // 
             // Game
             // 
             this.AcceptButton = this.Answer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 332);
+            this.Controls.Add(this.ShowWordStatics);
+            this.Controls.Add(this.StopTime);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.Hint);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -147,6 +183,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Game";
             this.Text = "Game";
@@ -169,5 +206,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button Hint;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Button StopTime;
+        private System.Windows.Forms.Button ShowWordStatics;
     }
 }

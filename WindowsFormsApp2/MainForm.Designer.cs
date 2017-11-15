@@ -79,6 +79,7 @@
             this.Texting.Size = new System.Drawing.Size(75, 23);
             this.Texting.TabIndex = 2;
             this.Texting.Text = "Текстовый";
+            this.toolTip1.SetToolTip(this.Texting, "Выводит новое окно с текстовым опросом.");
             this.Texting.UseVisualStyleBackColor = true;
             this.Texting.Click += new System.EventHandler(this.Text_Click);
             // 
@@ -89,6 +90,7 @@
             this.AnimalsDict.Size = new System.Drawing.Size(75, 23);
             this.AnimalsDict.TabIndex = 3;
             this.AnimalsDict.Text = "Животные";
+            this.toolTip1.SetToolTip(this.AnimalsDict, "Добавляет в словарь слова на тему животные.");
             this.AnimalsDict.UseVisualStyleBackColor = true;
             this.AnimalsDict.Click += new System.EventHandler(this.AnimalsDict_Click);
             // 
@@ -99,16 +101,18 @@
             this.Hobby.Size = new System.Drawing.Size(75, 23);
             this.Hobby.TabIndex = 4;
             this.Hobby.Text = "Хобби";
+            this.toolTip1.SetToolTip(this.Hobby, "Добавляет в словарь слова на тему хобби.");
             this.Hobby.UseVisualStyleBackColor = true;
             this.Hobby.Click += new System.EventHandler(this.Hobby_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 252);
+            this.button1.Location = new System.Drawing.Point(12, 243);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 23);
+            this.button1.Size = new System.Drawing.Size(128, 32);
             this.button1.TabIndex = 5;
-            this.button1.Text = "Вывод словаря";
+            this.button1.Text = "Показать словарь";
+            this.toolTip1.SetToolTip(this.button1, "Выводит словарь выбранного файла.");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -117,10 +121,11 @@
             this.Exit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Exit.BackgroundImage")));
             this.Exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Exit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Exit.Location = new System.Drawing.Point(214, 252);
+            this.Exit.Location = new System.Drawing.Point(214, 243);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(75, 23);
+            this.Exit.Size = new System.Drawing.Size(75, 32);
             this.Exit.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.Exit, "Выйти из программы.");
             this.Exit.UseVisualStyleBackColor = true;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -131,6 +136,7 @@
             this.Game.Size = new System.Drawing.Size(75, 23);
             this.Game.TabIndex = 7;
             this.Game.Text = "Игра";
+            this.toolTip1.SetToolTip(this.Game, "Выводит новое окно с игрой на время, где нужно угадать слово.");
             this.Game.UseVisualStyleBackColor = true;
             this.Game.Click += new System.EventHandler(this.Game_Click);
             // 
@@ -155,6 +161,7 @@
             this.Images.Size = new System.Drawing.Size(75, 23);
             this.Images.TabIndex = 9;
             this.Images.Text = "Картинки";
+            this.toolTip1.SetToolTip(this.Images, "Выводит новое окно, где нужно написать какое животное изображено на картинке.");
             this.Images.UseVisualStyleBackColor = true;
             this.Images.Click += new System.EventHandler(this.Images_Click);
             // 
@@ -174,10 +181,16 @@
             this.openFileDialog1.DefaultExt = "\"*.txt\"";
             this.openFileDialog1.Filter = "Text files (*.txt)|*.txt";
             this.openFileDialog1.InitialDirectory = "Pictures\\User Dictionary\\";
+            this.openFileDialog1.ReadOnlyChecked = true;
             // 
             // toolTip1
             // 
+            this.toolTip1.AutoPopDelay = 15000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Подсказка";
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // toolTip2
             // 
@@ -201,6 +214,8 @@
             this.Controls.Add(this.Texting);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Словарь-тренер";

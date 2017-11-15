@@ -13,6 +13,8 @@ namespace WindowsFormsApp2
     public partial class Images : Form
     {
 
+        private MainForm MF = new MainForm();
+
         private WordStatictics WS = new WordStatictics();
 
         private string RandomWordInRichTextBox;
@@ -27,13 +29,24 @@ namespace WindowsFormsApp2
 
         }
 
+        //1 - Animals, 2 - Hobbies
         private void Start_Click(object sender, EventArgs e)
         {
             RandomWordInRichTextBox = Dictionary.EngRandomWordOfDictionary();
-            string FileName = RandomWordInRichTextBox;
-            Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.Image = img;
+            string FileName = Dictionary.RandomWord;
+            if (MainForm.NumberOfPictures == 1)
+            {
+                Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Image = img;
+            }
+
+            else if (MainForm.NumberOfPictures == 2)
+            {
+                Image img = Image.FromFile(@"Pictures\Hobbies\" + FileName + ".jpg");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.Image = img;
+            }
             Start.Text = "Далее";
 
             //Очистка лейбла и текстбокса
@@ -60,14 +73,32 @@ namespace WindowsFormsApp2
                 if (textBox1.TextLength > 0)
                 {
                     string UserWord = textBox1.Text;
-                    string OriginalWord = RandomWordInRichTextBox;
+                    string OriginalWord = Dictionary.RandomWord;
 
                     if (UserWord == OriginalWord)
                     {
                         WS.CheckWordFromForm1(OriginalWord);
+                        Dictionary.DictForCheck[OriginalWord] = true;
                         label1.Text = "Right!";
                         label1.ForeColor = Color.Green;
                         label1.Refresh();
+
+                        if (Dictionary.EngRusWord)
+                        {
+                            Dictionary.SizeOfEngUnUsedWords--;
+                            if (Dictionary.SizeOfEngUnUsedWords > 0)
+                                Dictionary.EngUnUsedWords.Remove(OriginalWord);
+                            else
+                                MessageBox.Show("Все английские слова изучены!");
+                        }
+                        else
+                        {
+                            Dictionary.SizeOfRusUnUsedWords--;
+                            if (Dictionary.SizeOfRusUnUsedWords > 1)
+                                Dictionary.RusUnUsedWords.Remove(OriginalWord);
+                            else
+                                MessageBox.Show("Все русские слова изучены!");
+                        }
                     }
                     else if (UserWord.Length == OriginalWord.Length)
                     {
@@ -116,6 +147,7 @@ namespace WindowsFormsApp2
             {
                 e.Cancel = true;
                 Dictionary.Dict.Clear();
+                Dictionary.DictForCheck.Clear();
                 textBox1.Clear();
                 WS.ClearCheckedListBox();
                 Start.Text = "Начать";
@@ -126,6 +158,16 @@ namespace WindowsFormsApp2
                     pictureBox1.Image = null;
                 }
             }
+        }
+
+        private void ShowWordStatics_Click(object sender, EventArgs e)
+        {
+            WS.Show();
+        }
+
+        private void Images_Load(object sender, EventArgs e)
+        {
+            WS.AddItemsToCheckedListBox();
         }
     }
 }

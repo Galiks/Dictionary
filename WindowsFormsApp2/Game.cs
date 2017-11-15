@@ -14,9 +14,13 @@ namespace WindowsFormsApp2
     public partial class Game : Form
     {
 
+        WordsStaticCheck wordsSC = new WordsStaticCheck();
+
         private int time; // переменная, используемая для того, чтобы задать время
 
         private WordStatictics WS = new WordStatictics();
+
+        private MainForm MF = new MainForm();
 
         private string RandomWordInRichTextBox;
 
@@ -32,7 +36,8 @@ namespace WindowsFormsApp2
 
         private void AddText()
         {
-            RandomWordInRichTextBox = Dictionary.EngRandomWordOfDictionary();
+            Dictionary.EngRandomWordOfDictionary();
+            RandomWordInRichTextBox = Dictionary.RandomWord;
             richTextBox1.AppendText("Введите слово полностью: ");
             char[] BrokenWord = new char[RandomWordInRichTextBox.Length];//массив для букв слова
             for ( int i = 0; i < BrokenWord.Length; i++)
@@ -81,7 +86,11 @@ namespace WindowsFormsApp2
                 pictureBox1.Image.Dispose();
                 pictureBox1.Image = null;
             }
-            timer1.Start();
+            StopTime.Enabled = true;
+            time = 0;
+            timeLabel.Text = "Время: " + time + " seconds";
+            if(StopTime.Text == "Стоп")
+                timer1.Start();
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -102,14 +111,32 @@ namespace WindowsFormsApp2
                 if (textBox1.TextLength > 0)
                 {
                     string UserWord = textBox1.Text;
-                    string OriginalWord = RandomWordInRichTextBox;
+                    string OriginalWord = Dictionary.RandomWord;
 
                     if (UserWord == OriginalWord)
                     {
                         WS.CheckWordFromForm1(OriginalWord);
-                        label2.Text = "Right!";
-                        label2.ForeColor = Color.Green;
-                        label2.Refresh();
+                        Dictionary.DictForCheck[OriginalWord] = true;
+                        label1.Text = "Right!";
+                        label1.ForeColor = Color.Green;
+                        label1.Refresh();
+
+                        if (Dictionary.EngRusWord)
+                        {
+                            Dictionary.SizeOfEngUnUsedWords--;
+                            if (Dictionary.SizeOfEngUnUsedWords > 0)
+                                Dictionary.EngUnUsedWords.Remove(OriginalWord);
+                            else
+                                MessageBox.Show("Все английские слова изучены!","Позравляем!");
+                        }
+                        else
+                        {
+                            Dictionary.SizeOfRusUnUsedWords--;
+                            if (Dictionary.SizeOfRusUnUsedWords > 1)
+                                Dictionary.RusUnUsedWords.Remove(OriginalWord);
+                            else
+                                MessageBox.Show("Все русские слова изучены!","Позравляем!");
+                        }
                     }
                     else if (UserWord.Length == OriginalWord.Length)
                     {
@@ -158,6 +185,10 @@ namespace WindowsFormsApp2
             {
                 e.Cancel = true;
                 Dictionary.Dict.Clear();
+                Dictionary.DictForCheck.Clear();
+                timer1.Enabled = Enabled;
+                timer1.Stop();
+                time = 0;
                 richTextBox1.Clear();
                 textBox1.Clear();
                 label2.Text = "";
@@ -174,7 +205,12 @@ namespace WindowsFormsApp2
 
         private void Game_Load(object sender, EventArgs e)
         {
+            WS.AddItemsToCheckedListBox();
+            StopTime.Enabled = false;
             label2.Text = "";
+            timer1.Stop();
+            time = 0;
+            timeLabel.Text = "Время: ";
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -182,15 +218,26 @@ namespace WindowsFormsApp2
 
         }
 
+        //1 - Animals, 2 - Hobbies
         private void Hint_Click(object sender, EventArgs e) //import Tkinter, m = Tkinter.Tk()
         {
-            //RandomWordInRichTextBox
             try
             {
-                string FileName = RandomWordInRichTextBox;
-                Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox1.Image = img;
+                if (MainForm.NumberOfPictures == 1)
+                {
+                    string FileName = Dictionary.RandomWord;
+                    Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox1.Image = img;
+                }
+
+                else if(MainForm.NumberOfPictures == 2)
+                {
+                    string FileName = Dictionary.RandomWord;
+                    Image img = Image.FromFile(@"Pictures\Hobbies\" + FileName + ".jpg");
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox1.Image = img;
+                }
             }
             catch(FileNotFoundException)
             {
@@ -200,14 +247,46 @@ namespace WindowsFormsApp2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            time++;
-            if (time == 120)
+            if (time == 10)
             {
                 timer1.Stop();
-                MessageBox.Show("Time down");
-                time = 0;
+                MessageBox.Show("Время вышло!", "Таймер");
+                
                 Begin.PerformClick();
             }
+            else if (time < 10)
+            {
+                // Display the new time left
+                // by updating the Time Left label.
+                time = time + 1;
+                timeLabel.Text = "Время: " + time + " seconds";
+            }
+        }
+
+        private void timeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StopTime_Click(object sender, EventArgs e)
+        {
+            if (StopTime.Text == "Стоп")
+            {
+                timer1.Stop();
+                Answer.Enabled = false;
+                StopTime.Text = "Продолжить";
+            }
+            else if (StopTime.Text == "Продолжить")
+            {
+                timer1.Start();
+                Answer.Enabled = true;
+                StopTime.Text = "Стоп";
+            }
+        }
+
+        private void ShowWordStatics_Click(object sender, EventArgs e)
+        {
+            WS.Show();
         }
     }
 }

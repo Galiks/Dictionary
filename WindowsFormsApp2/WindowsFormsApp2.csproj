@@ -70,13 +70,19 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NameOfSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NameOfSave.Designer.cs">
+      <DependentUpon>NameOfSave.cs</DependentUpon>
+    </Compile>
     <Compile Include="OutputDictcs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OutputDictcs.Designer.cs">
       <DependentUpon>OutputDictcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="PictureDict.cs" />
+    <Compile Include="WordsStaticCheck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WordStatictics.cs">
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NameOfSave.resx">
+      <DependentUpon>NameOfSave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OutputDictcs.resx">
       <DependentUpon>OutputDictcs.cs</DependentUpon>

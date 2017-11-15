@@ -31,8 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WordStatictics));
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.TestButton = new System.Windows.Forms.Button();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // checkedListBox1
@@ -54,21 +55,9 @@
             this.TestButton.Name = "TestButton";
             this.TestButton.Size = new System.Drawing.Size(115, 23);
             this.TestButton.TabIndex = 1;
-            this.TestButton.Text = "TestButton - Save";
+            this.TestButton.Text = "Сохранить";
             this.TestButton.UseVisualStyleBackColor = true;
             this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
-            // 
-            // checkedListBox2
-            // 
-            this.checkedListBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(157, 24);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.checkedListBox2.Size = new System.Drawing.Size(115, 184);
-            this.checkedListBox2.TabIndex = 2;
             // 
             // button1
             // 
@@ -76,19 +65,36 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 23);
             this.button1.TabIndex = 3;
-            this.button1.Text = "TestButton - Load";
+            this.button1.Text = "Загрузить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.InitialDirectory = "\\Saves";
+            this.openFileDialog1.ReadOnlyChecked = true;
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(157, 24);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.checkedListBox2.Size = new System.Drawing.Size(115, 184);
+            this.checkedListBox2.TabIndex = 4;
+            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
             // 
             // WordStatictics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.checkedListBox2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.TestButton);
             this.Controls.Add(this.checkedListBox1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WordStatictics";
             this.Text = "WordStatictics";
@@ -102,7 +108,8 @@
 
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button TestButton;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
     }
 }

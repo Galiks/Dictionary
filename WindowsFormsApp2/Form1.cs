@@ -13,7 +13,9 @@ namespace WindowsFormsApp2
     public partial class Form1 : Form
     {
 
-        private string RandomWordInRichTextBox;
+        WordsStaticCheck wordsSC = new WordsStaticCheck();
+
+        //private string RandomWordInRichTextBox;
 
         private WordStatictics WS = new WordStatictics();
 
@@ -24,8 +26,7 @@ namespace WindowsFormsApp2
 
         private void AddText()
         {
-            RandomWordInRichTextBox = Dictionary.RusRandomWordOfDictionary();
-            richTextBox1.Text = "Введите перевод слова: " + RandomWordInRichTextBox;
+            richTextBox1.Text = "Введите перевод слова: " + Dictionary.EngRandomWordOfDictionary();
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -50,11 +51,28 @@ namespace WindowsFormsApp2
 
                     if (UserWord == OriginalWord)
                     {
-                        //MessageBox.Show("That's good, keep it up!");
                         WS.CheckWordFromForm1(OriginalWord);
+                        Dictionary.DictForCheck[OriginalWord] = true;
                         label1.Text = "Right!";
                         label1.ForeColor = Color.Green;
                         label1.Refresh();
+
+                        if (Dictionary.EngRusWord)
+                        {
+                            Dictionary.SizeOfEngUnUsedWords--;
+                            if (Dictionary.SizeOfEngUnUsedWords > 0)
+                                Dictionary.EngUnUsedWords.Remove(OriginalWord);
+                            else
+                                MessageBox.Show("Все английские слова изучены!");
+                        }
+                        else
+                        {
+                            Dictionary.SizeOfRusUnUsedWords--;
+                            if (Dictionary.SizeOfRusUnUsedWords > 1)
+                                Dictionary.RusUnUsedWords.Remove(OriginalWord);
+                            else
+                                MessageBox.Show("Все русские слова изучены!");
+                        }
                     }
                     else if (UserWord.Length == OriginalWord.Length)
                     {
@@ -120,6 +138,7 @@ namespace WindowsFormsApp2
                 richTextBox1.Clear();
                 textBox1.Clear();
                 WS.ClearCheckedListBox();
+                Dictionary.DictForCheck.Clear();
                 label1.Text = "";
                 Start.Text = "Начать";
                 Hide();

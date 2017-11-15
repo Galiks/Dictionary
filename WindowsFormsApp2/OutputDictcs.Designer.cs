@@ -71,6 +71,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.OutPut);
             this.Controls.Add(this.richTextBox1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OutputDictcs";
             this.Text = "OutputDictcs";

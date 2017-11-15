@@ -14,6 +14,10 @@ namespace WindowsFormsApp2
     public partial class MainForm : Form
     {
 
+        public static int NumberOfPictures;//1 - Animals, 2 - Hobbies
+
+        public static int NumberOfQuiz;//1 - Text, 2 - Images, 3 - Game
+
         Form OutDict = new OutputDictcs();
 
         private WordStatictics WS = new WordStatictics();
@@ -25,6 +29,7 @@ namespace WindowsFormsApp2
 
         private void Text_Click(object sender, EventArgs e)
         {
+            NumberOfQuiz = 1;
             Form1 f1 = new Form1();
             if (Dictionary.Dict.Count != 0)
             {
@@ -46,6 +51,7 @@ namespace WindowsFormsApp2
             label3.ForeColor = Color.Green;
             Images.Enabled = true;
             Game.Enabled = true;
+            NumberOfPictures = 1;
         }
 
         private void Hobby_Click(object sender, EventArgs e)
@@ -57,6 +63,7 @@ namespace WindowsFormsApp2
             label3.ForeColor = Color.Green;
             Images.Enabled = true;
             Game.Enabled = true;
+            NumberOfPictures = 2;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,6 +86,7 @@ namespace WindowsFormsApp2
 
         private void Game_Click(object sender, EventArgs e)
         {
+            NumberOfQuiz = 3;
             Form gaming = new Game();
             if (Dictionary.Dict.Count != 0)
             {
@@ -98,6 +106,7 @@ namespace WindowsFormsApp2
 
         private void Images_Click(object sender, EventArgs e)
         {
+            NumberOfQuiz = 2;
             Form imagesGame = new Images();
             if (Dictionary.Dict.Count != 0)
             {
@@ -112,6 +121,7 @@ namespace WindowsFormsApp2
 
         private void UserDictionary_Click(object sender, EventArgs e)
         {
+
             Dictionary.Dict.Clear();
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -129,8 +139,15 @@ namespace WindowsFormsApp2
                     fileRead.Close();
                 }
             }
+            label3.Text = "В словарь добавлены слова пользователя";
+            label3.ForeColor = Color.Green;
             Images.Enabled = false;
             Game.Enabled = false;
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+            
         }
     }
 }
