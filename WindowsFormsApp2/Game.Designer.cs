@@ -103,11 +103,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 109);
+            this.label2.Location = new System.Drawing.Point(109, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pictureBox1
             // 
@@ -139,7 +140,7 @@
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(231, 109);
+            this.timeLabel.Location = new System.Drawing.Point(93, 116);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(35, 13);
             this.timeLabel.TabIndex = 8;
@@ -148,7 +149,7 @@
             // 
             // StopTime
             // 
-            this.StopTime.Location = new System.Drawing.Point(137, 104);
+            this.StopTime.Location = new System.Drawing.Point(-1, 111);
             this.StopTime.Name = "StopTime";
             this.StopTime.Size = new System.Drawing.Size(88, 23);
             this.StopTime.TabIndex = 9;

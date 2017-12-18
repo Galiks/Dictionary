@@ -14,6 +14,8 @@ namespace WindowsFormsApp2
     public partial class Game : Form
     {
 
+        string FileName;
+
         WordsStaticCheck wordsSC = new WordsStaticCheck();
 
         private int time; // переменная, используемая для того, чтобы задать время
@@ -117,9 +119,9 @@ namespace WindowsFormsApp2
                     {
                         WS.CheckWordFromForm1(OriginalWord);
                         Dictionary.DictForCheck[OriginalWord] = true;
-                        label1.Text = "Right!";
-                        label1.ForeColor = Color.Green;
-                        label1.Refresh();
+                        label2.Text = "Right!";
+                        label2.ForeColor = Color.Green;
+                        label2.Refresh();
 
                         if (Dictionary.EngRusWord)
                         {
@@ -186,6 +188,8 @@ namespace WindowsFormsApp2
                 e.Cancel = true;
                 Dictionary.Dict.Clear();
                 Dictionary.DictForCheck.Clear();
+                RandomWordInRichTextBox = null;
+                FileName = null;
                 timer1.Enabled = Enabled;
                 timer1.Stop();
                 time = 0;
@@ -233,7 +237,7 @@ namespace WindowsFormsApp2
 
                 else if(MainForm.NumberOfPictures == 2)
                 {
-                    string FileName = Dictionary.RandomWord;
+                    FileName = Dictionary.RandomWord;
                     Image img = Image.FromFile(@"Pictures\Hobbies\" + FileName + ".jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox1.Image = img;
@@ -247,14 +251,14 @@ namespace WindowsFormsApp2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (time == 10)
+            if (time == 120)
             {
                 timer1.Stop();
                 MessageBox.Show("Время вышло!", "Таймер");
                 
                 Begin.PerformClick();
             }
-            else if (time < 10)
+            else if (time < 120)
             {
                 // Display the new time left
                 // by updating the Time Left label.
@@ -287,6 +291,11 @@ namespace WindowsFormsApp2
         private void ShowWordStatics_Click(object sender, EventArgs e)
         {
             WS.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
