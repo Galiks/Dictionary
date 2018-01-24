@@ -122,6 +122,7 @@ namespace WindowsFormsApp2
                         label2.Text = "Right!";
                         label2.ForeColor = Color.Green;
                         label2.Refresh();
+                        Begin_Click(sender, e);
 
                         if (Dictionary.EngRusWord)
                         {
