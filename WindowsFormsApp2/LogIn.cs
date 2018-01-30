@@ -13,6 +13,9 @@ namespace WindowsFormsApp2
 {
     public partial class LogIn : Form
     {
+
+        string login;
+
         private MainForm mainForm = new MainForm();
 
         private SignUp signUp = new SignUp();
@@ -37,10 +40,11 @@ namespace WindowsFormsApp2
 
             foreach(char x in letters)
             {
-                richTextBox1.Text += x;
+                login += x;
+                //richTextBox1.Text += x;
             }
-            
-            return null;
+            richTextBox1.Text = login;
+            return login;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,6 +92,11 @@ namespace WindowsFormsApp2
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -109,6 +109,7 @@
             this.Text = "Images";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Images_FormClosing);
             this.Load += new System.EventHandler(this.Images_Load);
+            this.Enter += new System.EventHandler(this.Answer_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

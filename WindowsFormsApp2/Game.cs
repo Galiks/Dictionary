@@ -14,6 +14,9 @@ namespace WindowsFormsApp2
     public partial class Game : Form
     {
 
+        int scoreRight = 0;
+        int scoreWrong = 0;
+
         string FileName;
 
         WordsStaticCheck wordsSC = new WordsStaticCheck();
@@ -120,6 +123,8 @@ namespace WindowsFormsApp2
                         WS.CheckWordFromForm1(OriginalWord);
                         Dictionary.DictForCheck[OriginalWord] = true;
                         label2.Text = "Right!";
+                        scoreRight++;
+                        dataGridView1[0,0].Value = scoreRight;
                         label2.ForeColor = Color.Green;
                         label2.Refresh();
                         Begin_Click(sender, e);
@@ -146,6 +151,8 @@ namespace WindowsFormsApp2
                         if (MistakeCounter(UserWord, OriginalWord) == 1)
                         {
                             label2.Text = "So close ;) Try again.";
+                            scoreWrong++;
+                            dataGridView1[1,0].Value = scoreWrong;
                             label2.ForeColor = Color.Blue;
                         }
                     }
@@ -155,17 +162,23 @@ namespace WindowsFormsApp2
                             UserWord.Substring(0, Math.Min(OriginalWord.Length, UserWord.Length)) == OriginalWord.Substring(0, OriginalWord.Length - 1))
                         {
                             label2.Text = "So close ;) Try again.";
+                            scoreWrong++;
+                            dataGridView1[1,0].Value = scoreWrong;
                             label2.ForeColor = Color.Blue;
                         }
                         else
                         {
                             label2.Text = "Wrong! Try another word.";
+                            scoreWrong++;
+                            dataGridView1[1,0].Value = scoreWrong;
                             label2.ForeColor = Color.Red;
                         }
                     }
                     else
                     {
                         label2.Text = "Wrong! Try another word.";
+                        scoreWrong++;
+                        dataGridView1[1, 0].Value = scoreWrong;
                         label2.ForeColor = Color.Red;
                     }
                 }
@@ -193,6 +206,7 @@ namespace WindowsFormsApp2
                 FileName = null;
                 timer1.Enabled = Enabled;
                 timer1.Stop();
+                timer1 = null;
                 time = 0;
                 richTextBox1.Clear();
                 textBox1.Clear();
@@ -264,7 +278,7 @@ namespace WindowsFormsApp2
                 // Display the new time left
                 // by updating the Time Left label.
                 time = time + 1;
-                timeLabel.Text = "Время: " + time + " seconds";
+                timeLabel.Text = "Время: " + time + " seconds / 120 seconds";
             }
         }
 
@@ -297,6 +311,16 @@ namespace WindowsFormsApp2
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Game_DockChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+              
         }
     }
 }
