@@ -1,36 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 
 namespace WindowsFormsApp2
 {
-    public static class Dictionary
+    public class WordDictionary
     {
-        public static Dictionary<string, string> Dict = new Dictionary<string, string>();
+        public Dictionary<string, string> Dict = new Dictionary<string, string>();
 
-        public static List<string> EngUnUsedWords = new List<string>(); //Список неиспользованных английских слов
-        public static List<string> RusUnUsedWords = new List<string>(); //Список неиспользованных русских слов
+        public List<string> EngUnUsedWords = new List<string>(); //Список неиспользованных английских слов
+        public List<string> RusUnUsedWords = new List<string>(); //Список неиспользованных русских слов
 
-        public static Dictionary<string, bool> DictForCheck = new Dictionary<string, bool>();// вместо сериализации
+        public Dictionary<string, bool> DictForCheck = new Dictionary<string, bool>();// вместо сериализации
 
-        public static int SizeOfEngUnUsedWords = 0;
-        public static int SizeOfRusUnUsedWords = 0;
+        public int SizeOfEngUnUsedWords = 0;
+        public int SizeOfRusUnUsedWords = 0;
 
-        public static bool EngRusWord = true;
+        public bool EngRusWord = true;
 
-        public static string RandomWord; //рандомное слово, которое будет выведено в методе RandomWordInDictionary
+        public string RandomWord; //рандомное слово, которое будет выведено в методе RandomWordInDictionary
 
         //public static List<string> GoneWords = new List<string>();
-        
-        static int Size //рамерность словаря Dict
+
+        public int Size //рамерность словаря Dict
         {
             get { return Dict.Count; }
         }
 
-        public static void AddToDict(string name) // добавление в словарь
+        public void AddToDict(string name) // добавление в словарь
         {
             using (StreamReader file = new StreamReader(name))
             {
@@ -56,7 +54,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        public static void Reverse(string name) // переворот словаря, сделанный по заказу Макса
+        public void Reverse(string name) // переворот словаря, сделанный по заказу Макса
         {
             using (StreamWriter fileWrite = new StreamWriter("AnimalReverse.txt"))
             {
@@ -74,17 +72,17 @@ namespace WindowsFormsApp2
             }
         }
 
-        public static string RusRandomWordOfDictionary() // рандомный выбор РУССКОГО слова из словаря Dict
+        public string RusRandomWordOfDictionary() // рандомный выбор РУССКОГО слова из словаря Dict
         {
             Random random = new Random();
             int cont = random.Next(0, SizeOfRusUnUsedWords);
             RandomWord = RusUnUsedWords[cont];
             EngRusWord = false;
 
-           return Dict[RandomWord];
+            return Dict[RandomWord];
         }
 
-        public static string EngRandomWordOfDictionary() // рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
+        public string EngRandomWordOfDictionary() // рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
         {
             Random random = new Random();
             int cont = random.Next(0, SizeOfEngUnUsedWords);

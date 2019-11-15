@@ -47,7 +47,7 @@
             this.checkedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.checkedListBox1.Size = new System.Drawing.Size(115, 184);
             this.checkedListBox1.TabIndex = 0;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.CheckedListBox1_SelectedIndexChanged);
             // 
             // TestButton
             // 
@@ -67,13 +67,13 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Загрузить";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.InitialDirectory = "\\Saves";
             this.openFileDialog1.ReadOnlyChecked = true;
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog1_FileOk);
             // 
             // checkedListBox2
             // 
@@ -83,7 +83,7 @@
             this.checkedListBox2.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.checkedListBox2.Size = new System.Drawing.Size(115, 184);
             this.checkedListBox2.TabIndex = 4;
-            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
+            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.CheckedListBox2_SelectedIndexChanged);
             // 
             // WordStatictics
             // 

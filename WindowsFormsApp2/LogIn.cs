@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using CommonLayer;
+using Ninject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,41 +17,45 @@ namespace WindowsFormsApp2
 {
     public partial class LogIn : Form
     {
+        private const string patternForLogin = @"Users\/(.+?)\.";
 
-        string login;
+        private readonly MainForm mainForm;
+        private readonly Registration registration;
+        private readonly ILoginLogic loginLogic;
 
-        private MainForm mainForm = new MainForm();
+        public MainForm MainForm => mainForm;
 
-        private SignUp signUp = new SignUp();
+        public Registration Registration => registration;
 
         public LogIn()
         {
             InitializeComponent();
+            mainForm = new MainForm();
+            registration = new Registration();
+            NinjectCommon.Registration();
+            loginLogic = NinjectCommon.Kernel.Get<ILoginLogic>();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void Label3_Click(object sender, EventArgs e)
         {
             
         }
 
-        string StupidMethod(string word)//этот метод обрезает найденный файл в каталоге так, чтобы осталось только название
+        public string CutOffFileName(string word)//этот метод обрезает найденный файл в каталоге так, чтобы осталось только название
         {
-            char[] letters = new char[word.Length];
-            for(int i = 6; i < word.Length-4; i++)
+            string login = string.Empty;
+            try
             {
-                letters[i] = word[i];
+                login = Regex.Match(word, patternForLogin).Groups[1].ToString();
             }
-
-            foreach(char x in letters)
+            catch (Exception)
             {
-                login += x;
-                //richTextBox1.Text += x;
+                MessageBox.Show("Wrong login");
             }
-            richTextBox1.Text = login;
             return login;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == null)
             {
@@ -59,42 +67,33 @@ namespace WindowsFormsApp2
             }
             else if (textBox1.Text == "admin" & textBox2.Text == "admin")
             {
-                mainForm.Show();
+                MainForm.Show();
             }
             else
             {
-                string[] dirs = Directory.GetFiles(@"Users/", "*.txt");
-                foreach (string dir in dirs)
+                if (loginLogic.IsConfirmLogin(textBox1.Text, textBox2.Text))
                 {
-                    string login = StupidMethod(dir);
-                    if (textBox1.Text == richTextBox1.Text)
-                    {
-                        using (StreamReader password = new StreamReader(dir))
-                        {
-                            string userPassword = password.ReadToEnd();
-                            if (textBox2.Text == userPassword)
-                            {
-                                mainForm.Show();
-                            }
-                            else MessageBox.Show("Wrong password");
-                        }
-                    }
-                    else MessageBox.Show("Wrong login");
+                    MainForm.Show();
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong login or password");
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            signUp.Show();
+            Registration.Show();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

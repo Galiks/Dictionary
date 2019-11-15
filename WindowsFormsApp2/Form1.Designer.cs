@@ -56,7 +56,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(260, 23);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // textBox1
             // 
@@ -65,7 +65,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // Start
             // 
@@ -75,7 +75,7 @@
             this.Start.TabIndex = 3;
             this.Start.Text = "Начать";
             this.Start.UseVisualStyleBackColor = true;
-            this.Start.Click += new System.EventHandler(this.button1_Click);
+            this.Start.Click += new System.EventHandler(this.Button1_Click);
             // 
             // ShowWordStatictics
             // 

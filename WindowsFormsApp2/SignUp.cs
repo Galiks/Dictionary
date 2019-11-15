@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2
 {
-    public partial class SignUp : Form
+    public partial class Registration : Form
     {
-        public SignUp()
+        public Registration()
         {
             InitializeComponent();
         }

@@ -18,31 +18,38 @@ namespace WindowsFormsApp2
         int scoreWrong = 0;
 
         string FileName;
-
-        WordsStaticCheck wordsSC = new WordsStaticCheck();
+        //private readonly WordsStaticCheck wordsStaticCheck;
 
         private int time; // переменная, используемая для того, чтобы задать время
 
-        private WordStatictics WS = new WordStatictics();
+        private readonly WordStatictics wordStatistics;
 
-        private MainForm MF = new MainForm();
+        //private readonly MainForm mainForm;
 
         private string RandomWordInRichTextBox;
+
+        private readonly WordDictionary wordDictionary;
+
+        public WordDictionary WordDictionary => wordDictionary;
 
         public Game()
         {
             InitializeComponent();
+            //wordsStaticCheck = new WordsStaticCheck();
+            wordStatistics = new WordStatictics();
+            //mainForm = new MainForm();
+            wordDictionary = new WordDictionary();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void AddText()
         {
-            Dictionary.EngRandomWordOfDictionary();
-            RandomWordInRichTextBox = Dictionary.RandomWord;
+            WordDictionary.EngRandomWordOfDictionary();
+            RandomWordInRichTextBox = WordDictionary.RandomWord;
             richTextBox1.AppendText("Введите слово полностью: ");
             char[] BrokenWord = new char[RandomWordInRichTextBox.Length];//массив для букв слова
             for ( int i = 0; i < BrokenWord.Length; i++)
@@ -74,7 +81,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -116,12 +123,12 @@ namespace WindowsFormsApp2
                 if (textBox1.TextLength > 0)
                 {
                     string UserWord = textBox1.Text;
-                    string OriginalWord = Dictionary.RandomWord;
+                    string OriginalWord = WordDictionary.RandomWord;
 
                     if (UserWord == OriginalWord)
                     {
-                        WS.CheckWordFromForm1(OriginalWord);
-                        Dictionary.DictForCheck[OriginalWord] = true;
+                        wordStatistics.CheckWordFromForm1(OriginalWord);
+                        WordDictionary.DictForCheck[OriginalWord] = true;
                         label2.Text = "Right!";
                         scoreRight++;
                         dataGridView1[0,0].Value = scoreRight;
@@ -129,19 +136,19 @@ namespace WindowsFormsApp2
                         label2.Refresh();
                         Begin_Click(sender, e);
 
-                        if (Dictionary.EngRusWord)
+                        if (WordDictionary.EngRusWord)
                         {
-                            Dictionary.SizeOfEngUnUsedWords--;
-                            if (Dictionary.SizeOfEngUnUsedWords > 0)
-                                Dictionary.EngUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfEngUnUsedWords--;
+                            if (WordDictionary.SizeOfEngUnUsedWords > 0)
+                                WordDictionary.EngUnUsedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все английские слова изучены!","Позравляем!");
                         }
                         else
                         {
-                            Dictionary.SizeOfRusUnUsedWords--;
-                            if (Dictionary.SizeOfRusUnUsedWords > 1)
-                                Dictionary.RusUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfRusUnUsedWords--;
+                            if (WordDictionary.SizeOfRusUnUsedWords > 1)
+                                WordDictionary.RusUnUsedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все русские слова изучены!","Позравляем!");
                         }
@@ -200,8 +207,8 @@ namespace WindowsFormsApp2
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                Dictionary.Dict.Clear();
-                Dictionary.DictForCheck.Clear();
+                WordDictionary.Dict.Clear();
+                WordDictionary.DictForCheck.Clear();
                 RandomWordInRichTextBox = null;
                 FileName = null;
                 timer1.Enabled = Enabled;
@@ -211,7 +218,7 @@ namespace WindowsFormsApp2
                 richTextBox1.Clear();
                 textBox1.Clear();
                 label2.Text = "";
-                WS.ClearCheckedListBox();
+                wordStatistics.ClearCheckedListBox();
                 Begin.Text = "Начать";
                 Hide();
                 if (pictureBox1.Image != null)
@@ -224,7 +231,7 @@ namespace WindowsFormsApp2
 
         private void Game_Load(object sender, EventArgs e)
         {
-            WS.AddItemsToCheckedListBox();
+            wordStatistics.AddItemsToCheckedListBox();
             StopTime.Enabled = false;
             label2.Text = "";
             timer1.Stop();
@@ -232,7 +239,7 @@ namespace WindowsFormsApp2
             timeLabel.Text = "Время: ";
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
 
         }
@@ -244,7 +251,7 @@ namespace WindowsFormsApp2
             {
                 if (MainForm.NumberOfPictures == 1)
                 {
-                    string FileName = Dictionary.RandomWord;
+                    string FileName = WordDictionary.RandomWord;
                     Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox1.Image = img;
@@ -252,7 +259,7 @@ namespace WindowsFormsApp2
 
                 else if(MainForm.NumberOfPictures == 2)
                 {
-                    FileName = Dictionary.RandomWord;
+                    FileName = WordDictionary.RandomWord;
                     Image img = Image.FromFile(@"Pictures\Hobbies\" + FileName + ".jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox1.Image = img;
@@ -264,7 +271,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (time == 120)
             {
@@ -277,12 +284,12 @@ namespace WindowsFormsApp2
             {
                 // Display the new time left
                 // by updating the Time Left label.
-                time = time + 1;
+                time += 1;
                 timeLabel.Text = "Время: " + time + " seconds / 120 seconds";
             }
         }
 
-        private void timeLabel_Click(object sender, EventArgs e)
+        private void TimeLabel_Click(object sender, EventArgs e)
         {
 
         }
@@ -305,10 +312,10 @@ namespace WindowsFormsApp2
 
         private void ShowWordStatics_Click(object sender, EventArgs e)
         {
-            WS.Show();
+            wordStatistics.Show();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -318,7 +325,7 @@ namespace WindowsFormsApp2
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
               
         }

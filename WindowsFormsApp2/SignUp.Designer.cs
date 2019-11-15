@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp2
 {
-    partial class SignUp
+    partial class Registration
     {
         /// <summary>
         /// Required designer variable.

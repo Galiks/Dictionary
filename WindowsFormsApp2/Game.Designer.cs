@@ -60,7 +60,7 @@
             this.label1.Size = new System.Drawing.Size(127, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Угадай слово";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // textBox1
             // 
@@ -70,7 +70,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(165, 20);
             this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // richTextBox1
             // 
@@ -114,7 +114,7 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // pictureBox1
             // 
@@ -126,7 +126,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(235, 150);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // Hint
             // 
@@ -143,7 +143,7 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // timeLabel
             // 
@@ -153,7 +153,7 @@
             this.timeLabel.Size = new System.Drawing.Size(35, 13);
             this.timeLabel.TabIndex = 8;
             this.timeLabel.Text = "label3";
-            this.timeLabel.Click += new System.EventHandler(this.timeLabel_Click);
+            this.timeLabel.Click += new System.EventHandler(this.TimeLabel_Click);
             // 
             // StopTime
             // 
@@ -188,7 +188,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(325, 43);
             this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // Column1
             // 

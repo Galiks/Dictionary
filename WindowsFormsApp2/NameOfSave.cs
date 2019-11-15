@@ -15,14 +15,21 @@ namespace WindowsFormsApp2
     public partial class NameOfSave : Form
     {
 
-        WordsStaticCheck WSC = new WordsStaticCheck();
+        private readonly WordsStaticCheck wordsStatistics;
+        private readonly WordDictionary wordDictionary;
+
+        public WordDictionary WordDictionary => wordDictionary;
+
+        public WordsStaticCheck WordsStatistics => wordsStatistics;
 
         public NameOfSave()
         {
             InitializeComponent();
+            wordsStatistics = new WordsStaticCheck();
+            wordDictionary = new WordDictionary();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -33,17 +40,17 @@ namespace WindowsFormsApp2
             if (textBox1.Text != null)
             {
                 SaveData(FileName);
-                this.Close();
+                Close();
             }
             else MessageBox.Show("Введите имя файла.", "Ошибка");
         }
 
-        public static void SaveData(string name) // 
+        public void SaveData(string name) // 
         {
             if(MainForm.NumberOfQuiz == 1)
             using (StreamWriter fileWrite = new StreamWriter(@"Saves\Text\" + name))
             {
-                foreach (var elem in Dictionary.DictForCheck)
+                foreach (var elem in WordDictionary.DictForCheck)
                 {
                     fileWrite.WriteLine(elem.Key.ToString() + ":" + elem.Value.ToString());
                 }
@@ -54,7 +61,7 @@ namespace WindowsFormsApp2
             {
                 using (StreamWriter fileWrite = new StreamWriter(@"Saves\Images\" + name))
                 {
-                    foreach (var elem in Dictionary.DictForCheck)
+                    foreach (var elem in WordDictionary.DictForCheck)
                     {
                         fileWrite.WriteLine(elem.Key.ToString() + ":" + elem.Value.ToString());
                     }
@@ -65,7 +72,7 @@ namespace WindowsFormsApp2
             {
                 using (StreamWriter fileWrite = new StreamWriter(@"Saves\Game\" + name))
                 {
-                    foreach (var elem in Dictionary.DictForCheck)
+                    foreach (var elem in WordDictionary.DictForCheck)
                     {
                         fileWrite.WriteLine(elem.Key.ToString() + ":" + elem.Value.ToString());
                     }

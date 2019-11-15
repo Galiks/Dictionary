@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
 using System.IO;
-using System.Xml.Serialization;
-using System.Collections;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp2
 {
@@ -22,14 +12,19 @@ namespace WindowsFormsApp2
 
         //private byte[] serializedStream;
 
-        NameOfSave NOS = new NameOfSave();
+        private readonly NameOfSave nameOfSafe;
+        private readonly WordDictionary wordDictionary;
+
+        public WordDictionary WordDictionary => wordDictionary;
 
         public WordStatictics()
         {
             InitializeComponent();
+            nameOfSafe = new NameOfSave();
+            wordDictionary = new WordDictionary();
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void CheckedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -48,7 +43,7 @@ namespace WindowsFormsApp2
         public void AddItemsToCheckedListBox()
         {
             checkedListBox1.Items.Clear();
-            foreach (var elem in Dictionary.Dict)
+            foreach (var elem in WordDictionary.Dict)
             {
                 checkedListBox1.Items.Add(elem.Key);
             }
@@ -63,11 +58,11 @@ namespace WindowsFormsApp2
             }
         }
 
-        
+
 
         private void TestButton_Click(object sender, EventArgs e) //Save
         {
-            NOS.Show();
+            nameOfSafe.Show();
         }
 
         private void WordStatictics_FormClosing(object sender, FormClosingEventArgs e)
@@ -79,7 +74,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) // Load
+        private void Button1_Click(object sender, EventArgs e) // Load
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -105,7 +100,7 @@ namespace WindowsFormsApp2
                     fileRead.Close();
                 }
             }
-            if(checkedListBox2.Items.Count != 0)
+            if (checkedListBox2.Items.Count != 0)
                 MessageBox.Show("Статистика загружена.", "Сообщение");
             else MessageBox.Show("Статистика не загружена.", "Ошибка");
         }
@@ -115,17 +110,17 @@ namespace WindowsFormsApp2
 
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void OpenFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }
 
-        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void CheckedListBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
