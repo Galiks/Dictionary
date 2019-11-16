@@ -62,3 +62,7 @@ E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\Entity
 E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\Ninject.xml
 E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\BusinessLogicLayer.Interface.pdb
 E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\BusinessLogicLayer.pdb
+E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\UserDao.Interface.dll
+E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\DataAccessLayer.dll
+E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\UserDao.Interface.pdb
+E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\bin\Debug\DataAccessLayer.pdb

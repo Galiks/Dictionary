@@ -16,9 +16,7 @@ namespace WindowsFormsApp2
     {
 
         private readonly WordsStaticCheck wordsStatistics;
-        private readonly WordDictionary wordDictionary;
 
-        public WordDictionary WordDictionary => wordDictionary;
 
         public WordsStaticCheck WordsStatistics => wordsStatistics;
 
@@ -26,7 +24,6 @@ namespace WindowsFormsApp2
         {
             InitializeComponent();
             wordsStatistics = new WordsStaticCheck();
-            wordDictionary = new WordDictionary();
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

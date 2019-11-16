@@ -5,30 +5,30 @@ using System.Linq;
 
 namespace WindowsFormsApp2
 {
-    public class WordDictionary
+    public static class WordDictionary
     {
-        public Dictionary<string, string> Dict = new Dictionary<string, string>();
+        public static Dictionary<string, string> Dict = new Dictionary<string, string>();
 
-        public List<string> EngUnUsedWords = new List<string>(); //Список неиспользованных английских слов
-        public List<string> RusUnUsedWords = new List<string>(); //Список неиспользованных русских слов
+        public static List<string> EngUnusedWords = new List<string>(); //Список неиспользованных английских слов
+        public static List<string> RusUnusedWords = new List<string>(); //Список неиспользованных русских слов
 
-        public Dictionary<string, bool> DictForCheck = new Dictionary<string, bool>();// вместо сериализации
+        public static Dictionary<string, bool> DictForCheck = new Dictionary<string, bool>();// вместо сериализации
 
-        public int SizeOfEngUnUsedWords = 0;
-        public int SizeOfRusUnUsedWords = 0;
+        public static int SizeOfEngUnusedWords = 0;
+        public static int SizeOfRusUnusedWords = 0;
 
-        public bool EngRusWord = true;
+        public static bool EngRusWord = true;
 
-        public string RandomWord; //рандомное слово, которое будет выведено в методе RandomWordInDictionary
+        public static string RandomWord; //рандомное слово, которое будет выведено в методе RandomWordInDictionary
 
         //public static List<string> GoneWords = new List<string>();
 
-        public int Size //рамерность словаря Dict
+        public static int Size //рамерность словаря Dict
         {
             get { return Dict.Count; }
         }
 
-        public void AddToDict(string name) // добавление в словарь
+        public static void AddToDict(string name) // добавление в словарь
         {
             using (StreamReader file = new StreamReader(name))
             {
@@ -39,8 +39,8 @@ namespace WindowsFormsApp2
                     {
                         if (!Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
                         {
-                            EngUnUsedWords.Add(line[i]);
-                            RusUnUsedWords.Add(line[i + 1]);
+                            EngUnusedWords.Add(line[i]);
+                            RusUnusedWords.Add(line[i + 1]);
                             Dict.Add(line[i], line[i + 1]);
                         }
                         if (!DictForCheck.Contains(new KeyValuePair<string, bool>(line[i], false)))
@@ -49,12 +49,12 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                SizeOfEngUnUsedWords = DictForCheck.Count;
-                SizeOfRusUnUsedWords = DictForCheck.Count;
+                SizeOfEngUnusedWords = DictForCheck.Count;
+                SizeOfRusUnusedWords = DictForCheck.Count;
             }
         }
 
-        public void Reverse(string name) // переворот словаря, сделанный по заказу Макса
+        public static void Reverse(string name) // переворот словаря, сделанный по заказу Макса
         {
             using (StreamWriter fileWrite = new StreamWriter("AnimalReverse.txt"))
             {
@@ -72,21 +72,21 @@ namespace WindowsFormsApp2
             }
         }
 
-        public string RusRandomWordOfDictionary() // рандомный выбор РУССКОГО слова из словаря Dict
+        public static string RusRandomWordOfDictionary() // рандомный выбор РУССКОГО слова из словаря Dict
         {
             Random random = new Random();
-            int cont = random.Next(0, SizeOfRusUnUsedWords);
-            RandomWord = RusUnUsedWords[cont];
+            int cont = random.Next(0, SizeOfRusUnusedWords);
+            RandomWord = RusUnusedWords[cont];
             EngRusWord = false;
 
             return Dict[RandomWord];
         }
 
-        public string EngRandomWordOfDictionary() // рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
+        public static string EngRandomWordOfDictionary() // рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
         {
             Random random = new Random();
-            int cont = random.Next(0, SizeOfEngUnUsedWords);
-            RandomWord = EngUnUsedWords[cont];
+            int cont = random.Next(0, SizeOfEngUnusedWords);
+            RandomWord = EngUnusedWords[cont];
             EngRusWord = true;
 
             return Dict[RandomWord];

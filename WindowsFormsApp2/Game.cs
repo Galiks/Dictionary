@@ -28,17 +28,12 @@ namespace WindowsFormsApp2
 
         private string RandomWordInRichTextBox;
 
-        private readonly WordDictionary wordDictionary;
-
-        public WordDictionary WordDictionary => wordDictionary;
-
         public Game()
         {
             InitializeComponent();
             //wordsStaticCheck = new WordsStaticCheck();
             wordStatistics = new WordStatictics();
             //mainForm = new MainForm();
-            wordDictionary = new WordDictionary();
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -138,17 +133,17 @@ namespace WindowsFormsApp2
 
                         if (WordDictionary.EngRusWord)
                         {
-                            WordDictionary.SizeOfEngUnUsedWords--;
-                            if (WordDictionary.SizeOfEngUnUsedWords > 0)
-                                WordDictionary.EngUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfEngUnusedWords--;
+                            if (WordDictionary.SizeOfEngUnusedWords > 0)
+                                WordDictionary.EngUnusedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все английские слова изучены!","Позравляем!");
                         }
                         else
                         {
-                            WordDictionary.SizeOfRusUnUsedWords--;
-                            if (WordDictionary.SizeOfRusUnUsedWords > 1)
-                                WordDictionary.RusUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfRusUnusedWords--;
+                            if (WordDictionary.SizeOfRusUnusedWords > 1)
+                                WordDictionary.RusUnusedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все русские слова изучены!","Позравляем!");
                         }

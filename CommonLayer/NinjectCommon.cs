@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace CommonLayer
 
         public static void Registration()
         {
-            _kernel.Bind<ILoginLogic>().To<LoginLogic>();
+            _kernel.Bind<IUserLogic>().To<UserLogic>();
+            _kernel.Bind<IUserDao>().To<UserDao>();
         }
     }
 }

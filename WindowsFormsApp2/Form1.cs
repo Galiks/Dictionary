@@ -12,7 +12,6 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        private readonly WordDictionary wordDictionary;
 
         //private readonly WordsStaticCheck wordsStatisticsCheck;
 
@@ -20,12 +19,9 @@ namespace WindowsFormsApp2
 
         private readonly WordStatictics wordStatistics;
 
-        public WordDictionary WordDictionary => wordDictionary;
-
         public Form1()
         {
             InitializeComponent();
-            wordDictionary = new WordDictionary();
             //wordsStatisticsCheck = new WordsStaticCheck();
             wordStatistics = new WordStatictics();
         }
@@ -65,17 +61,17 @@ namespace WindowsFormsApp2
 
                         if (WordDictionary.EngRusWord)
                         {
-                            WordDictionary.SizeOfEngUnUsedWords--;
-                            if (WordDictionary.SizeOfEngUnUsedWords > 0)
-                                WordDictionary.EngUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfEngUnusedWords--;
+                            if (WordDictionary.SizeOfEngUnusedWords > 0)
+                                WordDictionary.EngUnusedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все английские слова изучены!");
                         }
                         else
                         {
-                            WordDictionary.SizeOfRusUnUsedWords--;
-                            if (WordDictionary.SizeOfRusUnUsedWords > 1)
-                                WordDictionary.RusUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfRusUnusedWords--;
+                            if (WordDictionary.SizeOfRusUnusedWords > 1)
+                                WordDictionary.RusUnusedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все русские слова изучены!");
                         }

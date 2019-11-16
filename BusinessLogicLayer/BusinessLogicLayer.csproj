@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginLogic.cs" />
+    <Compile Include="UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +54,10 @@
     <ProjectReference Include="..\BusinessLogicLayer.Interface\BusinessLogicLayer.Interface.csproj">
       <Project>{ff664af6-a508-4ccd-9392-2e84cfb724f3}</Project>
       <Name>BusinessLogicLayer.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserDao.Interface\DataAccess.Interface.csproj">
+      <Project>{FE97A908-6F2D-43D7-B145-8004BE3B36FF}</Project>
+      <Name>DataAccess.Interface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

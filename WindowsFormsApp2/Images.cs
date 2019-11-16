@@ -12,19 +12,16 @@ namespace WindowsFormsApp2
 {
     public partial class Images : Form
     {
-        private readonly WordDictionary wordDictionary;
         //private readonly MainForm mainForm;
         private readonly WordStatictics wordStatisctics;
         //private string RandomWordInRichTextBox;
 
-        public WordDictionary WordDictionary => wordDictionary;
 
         public Images()
         {
             InitializeComponent();
             //mainForm = new MainForm();
             wordStatisctics = new WordStatictics();
-            wordDictionary = new WordDictionary();
         }
 
         private void PictureBox1_Click(object sender, EventArgs e)
@@ -88,17 +85,17 @@ namespace WindowsFormsApp2
 
                         if (WordDictionary.EngRusWord)
                         {
-                            WordDictionary.SizeOfEngUnUsedWords--;
-                            if (WordDictionary.SizeOfEngUnUsedWords > 0)
-                                WordDictionary.EngUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfEngUnusedWords--;
+                            if (WordDictionary.SizeOfEngUnusedWords > 0)
+                                WordDictionary.EngUnusedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все английские слова изучены!");
                         }
                         else
                         {
-                            WordDictionary.SizeOfRusUnUsedWords--;
-                            if (WordDictionary.SizeOfRusUnUsedWords > 1)
-                                WordDictionary.RusUnUsedWords.Remove(OriginalWord);
+                            WordDictionary.SizeOfRusUnusedWords--;
+                            if (WordDictionary.SizeOfRusUnusedWords > 1)
+                                WordDictionary.RusUnusedWords.Remove(OriginalWord);
                             else
                                 MessageBox.Show("Все русские слова изучены!");
                         }

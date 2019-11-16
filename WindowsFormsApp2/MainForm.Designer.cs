@@ -36,19 +36,19 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.языкToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.английскийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.словарьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.животныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.хоббиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.свойСловарьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.опросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.текстовыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.картинкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.играToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dictionaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.animalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hobbyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userDictionaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quizToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -101,11 +101,11 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.языкToolStripMenuItem,
-            this.опросToolStripMenuItem,
-            this.словарьToolStripMenuItem,
-            this.настройкиToolStripMenuItem,
-            this.выходToolStripMenuItem});
+            this.languageToolStripMenuItem,
+            this.quizToolStripMenuItem,
+            this.dictionaryToolStripMenuItem,
+            this.settingToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(307, 24);
@@ -115,86 +115,86 @@
             // 
             // языкToolStripMenuItem
             // 
-            this.языкToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.английскийToolStripMenuItem});
-            this.языкToolStripMenuItem.Name = "языкToolStripMenuItem";
-            this.языкToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.языкToolStripMenuItem.Text = "Язык";
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = "языкToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.languageToolStripMenuItem.Text = "Язык";
             // 
             // английскийToolStripMenuItem
             // 
-            this.английскийToolStripMenuItem.Name = "английскийToolStripMenuItem";
-            this.английскийToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.английскийToolStripMenuItem.Text = "Английский";
+            this.englishToolStripMenuItem.Name = "английскийToolStripMenuItem";
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.englishToolStripMenuItem.Text = "Английский";
             // 
             // словарьToolStripMenuItem
             // 
-            this.словарьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.животныеToolStripMenuItem,
-            this.хоббиToolStripMenuItem,
-            this.свойСловарьToolStripMenuItem});
-            this.словарьToolStripMenuItem.Name = "словарьToolStripMenuItem";
-            this.словарьToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.словарьToolStripMenuItem.Text = "Словарь";
+            this.dictionaryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.animalsToolStripMenuItem,
+            this.hobbyToolStripMenuItem,
+            this.userDictionaryToolStripMenuItem});
+            this.dictionaryToolStripMenuItem.Name = "словарьToolStripMenuItem";
+            this.dictionaryToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.dictionaryToolStripMenuItem.Text = "Словарь";
             // 
             // животныеToolStripMenuItem
             // 
-            this.животныеToolStripMenuItem.Name = "животныеToolStripMenuItem";
-            this.животныеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.животныеToolStripMenuItem.Text = "Животные";
-            this.животныеToolStripMenuItem.Click += new System.EventHandler(this.AnimalsToolStripMenuItem_Click);
+            this.animalsToolStripMenuItem.Name = "животныеToolStripMenuItem";
+            this.animalsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.animalsToolStripMenuItem.Text = "Животные";
+            this.animalsToolStripMenuItem.Click += new System.EventHandler(this.AnimalsToolStripMenuItem_Click);
             // 
             // хоббиToolStripMenuItem
             // 
-            this.хоббиToolStripMenuItem.Name = "хоббиToolStripMenuItem";
-            this.хоббиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.хоббиToolStripMenuItem.Text = "Хобби";
-            this.хоббиToolStripMenuItem.Click += new System.EventHandler(this.HobbyToolStripMenuItem_Click);
+            this.hobbyToolStripMenuItem.Name = "хоббиToolStripMenuItem";
+            this.hobbyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hobbyToolStripMenuItem.Text = "Хобби";
+            this.hobbyToolStripMenuItem.Click += new System.EventHandler(this.HobbyToolStripMenuItem_Click);
             // 
             // свойСловарьToolStripMenuItem
             // 
-            this.свойСловарьToolStripMenuItem.Name = "свойСловарьToolStripMenuItem";
-            this.свойСловарьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.свойСловарьToolStripMenuItem.Text = "Свой словарь";
-            this.свойСловарьToolStripMenuItem.Click += new System.EventHandler(this.UserDictionaryToolStripMenuItem_Click);
+            this.userDictionaryToolStripMenuItem.Name = "свойСловарьToolStripMenuItem";
+            this.userDictionaryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userDictionaryToolStripMenuItem.Text = "Свой словарь";
+            this.userDictionaryToolStripMenuItem.Click += new System.EventHandler(this.UserDictionaryToolStripMenuItem_Click);
             // 
             // опросToolStripMenuItem
             // 
-            this.опросToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.текстовыйToolStripMenuItem,
-            this.картинкиToolStripMenuItem,
-            this.играToolStripMenuItem});
-            this.опросToolStripMenuItem.Name = "опросToolStripMenuItem";
-            this.опросToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.опросToolStripMenuItem.Text = "Опрос";
+            this.quizToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textToolStripMenuItem,
+            this.imageToolStripMenuItem,
+            this.gameToolStripMenuItem});
+            this.quizToolStripMenuItem.Name = "опросToolStripMenuItem";
+            this.quizToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.quizToolStripMenuItem.Text = "Опрос";
             // 
             // текстовыйToolStripMenuItem
             // 
-            this.текстовыйToolStripMenuItem.Name = "текстовыйToolStripMenuItem";
-            this.текстовыйToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.текстовыйToolStripMenuItem.Text = "Текстовый";
-            this.текстовыйToolStripMenuItem.Click += new System.EventHandler(this.TextToolStripMenuItem_Click);
+            this.textToolStripMenuItem.Name = "текстовыйToolStripMenuItem";
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.textToolStripMenuItem.Text = "Текстовый";
+            this.textToolStripMenuItem.Click += new System.EventHandler(this.TextToolStripMenuItem_Click);
             // 
             // картинкиToolStripMenuItem
             // 
-            this.картинкиToolStripMenuItem.Name = "картинкиToolStripMenuItem";
-            this.картинкиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.картинкиToolStripMenuItem.Text = "Картинки";
-            this.картинкиToolStripMenuItem.Click += new System.EventHandler(this.ImageToolStripMenuItem_Click);
+            this.imageToolStripMenuItem.Name = "картинкиToolStripMenuItem";
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.imageToolStripMenuItem.Text = "Картинки";
+            this.imageToolStripMenuItem.Click += new System.EventHandler(this.ImageToolStripMenuItem_Click);
             // 
             // играToolStripMenuItem
             // 
-            this.играToolStripMenuItem.Name = "играToolStripMenuItem";
-            this.играToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.играToolStripMenuItem.Text = "Игра";
-            this.играToolStripMenuItem.Click += new System.EventHandler(this.GameToolStripMenuItem_Click);
+            this.gameToolStripMenuItem.Name = "играToolStripMenuItem";
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gameToolStripMenuItem.Text = "Игра";
+            this.gameToolStripMenuItem.Click += new System.EventHandler(this.GameToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -207,10 +207,10 @@
             // 
             // настройкиToolStripMenuItem
             // 
-            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.настройкиToolStripMenuItem.Text = "Настройки";
-            this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.SettingToolStripMenuItem_Click);
+            this.settingToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.settingToolStripMenuItem.Text = "Настройки";
+            this.settingToolStripMenuItem.Click += new System.EventHandler(this.SettingToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -245,18 +245,18 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem словарьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem животныеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem хоббиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem свойСловарьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem опросToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem текстовыйToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem картинкиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem играToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem языкToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem английскийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dictionaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem animalsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hobbyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userDictionaryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quizToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
     }
 }

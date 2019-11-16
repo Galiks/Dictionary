@@ -1,6 +1,6 @@
 ﻿namespace BusinessLogicLayer
 {
-    public interface ILoginLogic
+    public interface IUserLogic
     {
         string CutOffFileName(string word);
         bool IsConfirmLogin(string enteredLogin, string enteredPassword);

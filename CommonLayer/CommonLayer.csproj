@@ -59,6 +59,14 @@
       <Project>{2ed327f3-437d-4473-bc7e-e0c1b0cab836}</Project>
       <Name>BusinessLogicLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{aba97fdb-da1c-4299-afe1-e41d2b33ee0f}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserDao.Interface\DataAccess.Interface.csproj">
+      <Project>{FE97A908-6F2D-43D7-B145-8004BE3B36FF}</Project>
+      <Name>DataAccess.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

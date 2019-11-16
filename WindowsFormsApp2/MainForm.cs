@@ -9,7 +9,6 @@ namespace WindowsFormsApp2
 {
     public partial class MainForm : Form
     {
-        public WordDictionary dictionary;
 
         public static int NumberOfPictures;//1 - Animals, 2 - Hobbies
 
@@ -27,7 +26,6 @@ namespace WindowsFormsApp2
             Image img = Image.FromFile(@"orig.gif");
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Image = img;
-            dictionary = new WordDictionary();
             outDict = new OutputDictcs();
             settings = new Settings();
         }
@@ -36,7 +34,7 @@ namespace WindowsFormsApp2
         //{
         //    NumberOfQuiz = 1;
         //    Form1 f1 = new Form1();
-        //    if (Dictionary.Dict.Count != 0)
+        //    if (WordDictionary.Dict.Count != 0)
         //    {
         //        f1.Show();
         //    }
@@ -49,9 +47,9 @@ namespace WindowsFormsApp2
 
         //private void AnimalsDict_Click(object sender, EventArgs e)
         //{
-        //    Dictionary.Dict.Clear();
+        //    WordDictionary.Dict.Clear();
         //    string ChooseDict = "Animals.txt";
-        //    Dictionary.AddToDict(ChooseDict);
+        //    WordDictionary.AddToDict(ChooseDict);
         //    label3.Text = "В словарь добавлены слова на тему: животные";
         //    label3.ForeColor = Color.Green;
         //    Images.Enabled = true;
@@ -61,9 +59,9 @@ namespace WindowsFormsApp2
 
         //private void Hobby_Click(object sender, EventArgs e)
         //{
-        //    Dictionary.Dict.Clear();
+        //    WordDictionary.Dict.Clear();
         //    string ChooseDict = "Hobby.txt";
-        //    Dictionary.AddToDict(ChooseDict);
+        //    WordDictionary.AddToDict(ChooseDict);
         //    label3.Text = "В словарь добавлены слова на тему: хобби";
         //    label3.ForeColor = Color.Green;
         //    Images.Enabled = true;
@@ -93,7 +91,7 @@ namespace WindowsFormsApp2
         //{
         //    NumberOfQuiz = 3;
         //    Form gaming = new Game();
-        //    if (Dictionary.Dict.Count != 0)
+        //    if (WordDictionary.Dict.Count != 0)
         //    {
         //        gaming.Show();
         //    }
@@ -113,7 +111,7 @@ namespace WindowsFormsApp2
         //{
         //    NumberOfQuiz = 2;
         //    Form imagesGame = new Images();
-        //    if (Dictionary.Dict.Count != 0)
+        //    if (WordDictionary.Dict.Count != 0)
         //    {
         //        imagesGame.Show();
         //    }
@@ -124,9 +122,9 @@ namespace WindowsFormsApp2
         //    }
         //}
 
-        //private void UserDictionary_Click(object sender, EventArgs e)
+        //private void UserWordDictionary_Click(object sender, EventArgs e)
         //{
-        //    Dictionary.Dict.Clear();
+        //    WordDictionary.Dict.Clear();
         //    if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
         //    {
         //        using (StreamReader fileRead = new StreamReader(openFileDialog1.FileName))
@@ -136,8 +134,8 @@ namespace WindowsFormsApp2
         //                string[] line = fileRead.ReadLine().Split(',');
         //                for (int i = 0; i < line.Length - 1; i++)
         //                {
-        //                    if (!Dictionary.Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
-        //                        Dictionary.Dict.Add(line[i], line[i + 1]);
+        //                    if (!WordDictionary.Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
+        //                        WordDictionary.Dict.Add(line[i], line[i + 1]);
         //                }
         //            }
         //            fileRead.Close();
@@ -156,13 +154,14 @@ namespace WindowsFormsApp2
 
         private void AnimalsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dictionary.Dict.Clear();
+            WordDictionary.Dict.Clear();
             string ChooseDict = "Animals.txt";
-            dictionary.AddToDict(ChooseDict);
+            WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: животные";
             label3.ForeColor = Color.Green;
-            текстовыйToolStripMenuItem.Enabled = true;
-            играToolStripMenuItem.Enabled = true;
+            
+            textToolStripMenuItem.Enabled = true;
+            gameToolStripMenuItem.Enabled = true;
             //Images.Enabled = true;
             //Game.Enabled = true;
             NumberOfPictures = 1;
@@ -170,13 +169,13 @@ namespace WindowsFormsApp2
 
         private void HobbyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dictionary.Dict.Clear();
+            WordDictionary.Dict.Clear();
             string ChooseDict = "Hobby.txt";
-            dictionary.AddToDict(ChooseDict);
+            WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: хобби";
             label3.ForeColor = Color.Green;
-            текстовыйToolStripMenuItem.Enabled = true;
-            играToolStripMenuItem.Enabled = true;
+            textToolStripMenuItem.Enabled = true;
+            gameToolStripMenuItem.Enabled = true;
             //Images.Enabled = true;
             //Game.Enabled = true;
             NumberOfPictures = 2;
@@ -184,27 +183,29 @@ namespace WindowsFormsApp2
 
         private void UserDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dictionary.Dict.Clear();
+            WordDictionary.Dict.Clear();
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                using (StreamReader fileRead = new StreamReader(openFileDialog1.FileName))
-                {
-                    while (fileRead.Peek() > -1)
-                    {
-                        string[] line = fileRead.ReadLine().Split(',');
-                        for (int i = 0; i < line.Length - 1; i++)
-                        {
-                            if (!dictionary.Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
-                                dictionary.Dict.Add(line[i], line[i + 1]);
-                        }
-                    }
-                    fileRead.Close();
-                }
+                WordDictionary.AddToDict(openFileDialog1.FileName);
+                //using (StreamReader fileRead = new StreamReader(openFileDialog1.FileName))
+                //{
+                //    while (fileRead.Peek() > -1)
+                //    {
+                //        string[] line = fileRead.ReadLine().Split(',');
+                //        for (int i = 0; i < line.Length - 1; i++)
+                //        {
+                //            if (!WordDictionary.Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
+                //                WordDictionary.Dict.Add(line[i], line[i + 1]);
+                //        }
+                //    }
+                //    fileRead.Close();
+                //}
             }
             label3.Text = "В словарь добавлены слова пользователя";
             label3.ForeColor = Color.Green;
-            текстовыйToolStripMenuItem.Enabled = false;
-            играToolStripMenuItem.Enabled = false;
+            textToolStripMenuItem.Enabled = true;
+            imageToolStripMenuItem.Enabled = false;
+            gameToolStripMenuItem.Enabled = false;
         }
 
         private void TextToolStripMenuItem_Click(object sender, EventArgs e)
@@ -213,7 +214,7 @@ namespace WindowsFormsApp2
             Form1 f1 = new Form1();
 
 
-            if (dictionary.Dict.Count != 0)
+            if (WordDictionary.Dict.Count != 0)
             {
                 f1.Show();
             }
@@ -230,7 +231,7 @@ namespace WindowsFormsApp2
             NumberOfQuiz = 2;
             Form imagesGame = new Images();
 
-            if (dictionary.Dict.Count != 0)
+            if (WordDictionary.Dict.Count != 0)
             {
                 imagesGame.Show();
             }
@@ -247,7 +248,7 @@ namespace WindowsFormsApp2
             NumberOfQuiz = 3;
             Form gaming = new Game();
 
-            if (dictionary.Dict.Count != 0)
+            if (WordDictionary.Dict.Count != 0)
             {
                 gaming.Show();
             }

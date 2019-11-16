@@ -21,7 +21,7 @@ namespace WindowsFormsApp2
 
         private readonly MainForm mainForm;
         private readonly Registration registration;
-        private readonly ILoginLogic loginLogic;
+        private readonly IUserLogic loginLogic;
 
         public MainForm MainForm => mainForm;
 
@@ -33,7 +33,7 @@ namespace WindowsFormsApp2
             mainForm = new MainForm();
             registration = new Registration();
             NinjectCommon.Registration();
-            loginLogic = NinjectCommon.Kernel.Get<ILoginLogic>();
+            loginLogic = NinjectCommon.Kernel.Get<IUserLogic>();
         }
 
         private void Label3_Click(object sender, EventArgs e)

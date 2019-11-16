@@ -13,15 +13,12 @@ namespace WindowsFormsApp2
         //private byte[] serializedStream;
 
         private readonly NameOfSave nameOfSafe;
-        private readonly WordDictionary wordDictionary;
 
-        public WordDictionary WordDictionary => wordDictionary;
 
         public WordStatictics()
         {
             InitializeComponent();
             nameOfSafe = new NameOfSave();
-            wordDictionary = new WordDictionary();
         }
 
         private void CheckedListBox1_SelectedIndexChanged(object sender, EventArgs e)
