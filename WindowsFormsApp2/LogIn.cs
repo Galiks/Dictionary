@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer;
 using CommonLayer;
+using Entity;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,7 @@ namespace WindowsFormsApp2
                 if (loginLogic.IsConfirmLogin(textBox1.Text, textBox2.Text))
                 {
                     MainForm.Show();
+                    User.Name = textBox1.Text;
                     Hide();
                 }
                 else

@@ -215,7 +215,7 @@ namespace WindowsFormsApp2
                 label2.Text = "";
                 wordStatistics.ClearCheckedListBox();
                 Begin.Text = "Начать";
-                Hide();
+                this.Close();
                 if (pictureBox1.Image != null)
                 {
                     pictureBox1.Image.Dispose();

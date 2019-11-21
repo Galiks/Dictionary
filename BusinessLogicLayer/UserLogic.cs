@@ -59,5 +59,10 @@ namespace BusinessLogicLayer
             }
             return false;
         }
+
+        public void SaveGameResult(int scoreRight, int scoreWrong)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
