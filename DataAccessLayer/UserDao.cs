@@ -13,5 +13,10 @@ namespace DataAccessLayer
         {
             return Directory.GetFiles(@"Users/", "*.txt");
         }
+
+        public bool SaveGameResult()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

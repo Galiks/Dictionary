@@ -33,7 +33,7 @@ namespace WindowsFormsApp2
         private void Start_Click(object sender, EventArgs e)
         {
             //RandomWordInRichTextBox = WordDictionary.EngRandomWordOfDictionary();
-            string FileName = WordDictionary.RandomWord;
+            string FileName = WordDictionary.EngRandomWordOfDictionary();
             if (MainForm.NumberOfPictures == 1)
             {
                 Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");

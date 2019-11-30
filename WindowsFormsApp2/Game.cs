@@ -206,8 +206,8 @@ namespace WindowsFormsApp2
                 WordDictionary.DictForCheck.Clear();
                 RandomWordInRichTextBox = null;
                 FileName = null;
-                timer1.Enabled = Enabled;
-                timer1.Stop();
+                //timer1.Enabled = Enabled;
+                //timer1.Stop();
                 timer1 = null;
                 time = 0;
                 richTextBox1.Clear();
@@ -215,7 +215,7 @@ namespace WindowsFormsApp2
                 label2.Text = "";
                 wordStatistics.ClearCheckedListBox();
                 Begin.Text = "Начать";
-                this.Close();
+                this.Dispose();
                 if (pictureBox1.Image != null)
                 {
                     pictureBox1.Image.Dispose();

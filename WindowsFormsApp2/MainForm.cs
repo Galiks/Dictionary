@@ -14,11 +14,7 @@ namespace WindowsFormsApp2
 
         public static int NumberOfQuiz;//1 - Text, 2 - Images, 3 - Game
 
-        private readonly Form outDict;
-
         //private readonly WordStatictics wordStatictics;
-
-        private readonly Settings settings;
 
         public MainForm()
         {
@@ -26,8 +22,6 @@ namespace WindowsFormsApp2
             Image img = Image.FromFile(@"orig.gif");
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.Image = img;
-            outDict = new OutputDictcs();
-            settings = new Settings();
         }
 
         //private void Text_Click(object sender, EventArgs e)
@@ -71,6 +65,7 @@ namespace WindowsFormsApp2
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            OutputDictcs outDict = new OutputDictcs();
             outDict.Show();
         }
 
@@ -159,7 +154,7 @@ namespace WindowsFormsApp2
             WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: животные";
             label3.ForeColor = Color.Green;
-            
+
             textToolStripMenuItem.Enabled = true;
             gameToolStripMenuItem.Enabled = true;
             //Images.Enabled = true;
@@ -184,22 +179,9 @@ namespace WindowsFormsApp2
         private void UserDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WordDictionary.Dict.Clear();
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 WordDictionary.AddToDict(openFileDialog1.FileName);
-                //using (StreamReader fileRead = new StreamReader(openFileDialog1.FileName))
-                //{
-                //    while (fileRead.Peek() > -1)
-                //    {
-                //        string[] line = fileRead.ReadLine().Split(',');
-                //        for (int i = 0; i < line.Length - 1; i++)
-                //        {
-                //            if (!WordDictionary.Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
-                //                WordDictionary.Dict.Add(line[i], line[i + 1]);
-                //        }
-                //    }
-                //    fileRead.Close();
-                //}
             }
             label3.Text = "В словарь добавлены слова пользователя";
             label3.ForeColor = Color.Green;
@@ -211,7 +193,7 @@ namespace WindowsFormsApp2
         private void TextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NumberOfQuiz = 1;
-            Form1 f1 = new Form1();
+            Text f1 = new Text();
 
 
             if (WordDictionary.Dict.Count != 0)
@@ -277,7 +259,27 @@ namespace WindowsFormsApp2
 
         private void SettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Settings settings = new Settings();
             settings.Show();
+        }
+
+        private void QuizToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WordDictionary.Dict.Count != 0)
+            {
+                Test test = new Test();
+                test.Show();
+            }
+            else
+            {
+                label3.Text = "Выберите словарь!";
+                label3.ForeColor = Color.DarkRed;
+            }
         }
     }
 }

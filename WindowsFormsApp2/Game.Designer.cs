@@ -230,7 +230,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Game";
-            this.Text = "Game";
+            this.Text = "Игра";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Game_FormClosing);
             this.Load += new System.EventHandler(this.Game_Load);
             this.DockChanged += new System.EventHandler(this.Game_DockChanged);

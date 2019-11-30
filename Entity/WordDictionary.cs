@@ -76,7 +76,7 @@ namespace WindowsFormsApp2
         {
             Random random = new Random();
             int cont = random.Next(0, SizeOfRusUnusedWords);
-            RandomWord = RusUnusedWords[cont];
+            RandomWord = EngUnusedWords[cont];
             EngRusWord = false;
 
             return Dict[RandomWord];
@@ -89,7 +89,7 @@ namespace WindowsFormsApp2
             RandomWord = EngUnusedWords[cont];
             EngRusWord = true;
 
-            return Dict[RandomWord];
+            return RandomWord;
         }
     }
 }

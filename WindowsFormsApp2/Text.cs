@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2
 {
-    public partial class Form1 : Form
+    public partial class Text : Form
     {
 
         //private readonly WordsStaticCheck wordsStatisticsCheck;
@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
 
         private readonly WordStatictics wordStatistics;
 
-        public Form1()
+        public Text()
         {
             InitializeComponent();
             //wordsStatisticsCheck = new WordsStaticCheck();
