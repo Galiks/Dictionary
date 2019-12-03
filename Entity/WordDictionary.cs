@@ -7,25 +7,48 @@ namespace WindowsFormsApp2
 {
     public static class WordDictionary
     {
-        public static Dictionary<string, string> Dict = new Dictionary<string, string>();
+        private static Random random;
 
-        public static List<string> EngUnusedWords = new List<string>(); //Список неиспользованных английских слов
-        public static List<string> RusUnusedWords = new List<string>(); //Список неиспользованных русских слов
+        /// <summary>
+        /// Основной контейнер, который содержит все слова
+        /// </summary>
+        public static Dictionary<string, string> DictionaryOfWord;
 
-        public static Dictionary<string, bool> DictForCheck = new Dictionary<string, bool>();// вместо сериализации
+        /// <summary>
+        /// Список неиспользованных английских слов
+        /// </summary>
+        public static List<string> EngUnusedWords;
 
-        public static int SizeOfEngUnusedWords = 0;
-        public static int SizeOfRusUnusedWords = 0;
+        /// <summary>
+        /// Список неиспользованных русских слов
+        /// </summary>
+        public static List<string> RusUnusedWords;
+
+        public static Dictionary<string, bool> DictForCheck;// вместо сериализации
+
+        //public static int SizeOfEngUnusedWords = 0;
+        //public static int SizeOfRusUnusedWords = 0;
 
         public static bool EngRusWord = true;
 
-        public static string RandomWord; //рандомное слово, которое будет выведено в методе RandomWordInDictionary
-
+        /// <summary>
+        /// рандомное слово, которое будет выведено в методе RandomWordInDictionary
+        /// </summary>
+        public static string RandomWord;
         //public static List<string> GoneWords = new List<string>();
 
         public static int Size //рамерность словаря Dict
         {
-            get { return Dict.Count; }
+            get { return DictionaryOfWord.Count; }
+        }
+
+        static WordDictionary()
+        {
+            random = new Random();
+            DictionaryOfWord = new Dictionary<string, string>();
+            EngUnusedWords = new List<string>();
+            RusUnusedWords = new List<string>();
+            DictForCheck = new Dictionary<string, bool>();
         }
 
         public static void AddToDict(string name) // добавление в словарь
@@ -37,11 +60,9 @@ namespace WindowsFormsApp2
                     string[] line = file.ReadLine().Split(',');
                     for (int i = 0; i < line.Length - 1; i++)
                     {
-                        if (!Dict.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
+                        if (!DictionaryOfWord.Contains(new KeyValuePair<string, string>(line[i], line[i + 1])))
                         {
-                            EngUnusedWords.Add(line[i]);
-                            RusUnusedWords.Add(line[i + 1]);
-                            Dict.Add(line[i], line[i + 1]);
+                            DictionaryOfWord.Add(line[i], line[i + 1]);
                         }
                         if (!DictForCheck.Contains(new KeyValuePair<string, bool>(line[i], false)))
                         {
@@ -49,8 +70,8 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                SizeOfEngUnusedWords = DictForCheck.Count;
-                SizeOfRusUnusedWords = DictForCheck.Count;
+                //SizeOfEngUnusedWords = DictForCheck.Count;
+                //SizeOfRusUnusedWords = DictForCheck.Count;
             }
         }
 
@@ -72,24 +93,50 @@ namespace WindowsFormsApp2
             }
         }
 
-        public static string RusRandomWordOfDictionary() // рандомный выбор РУССКОГО слова из словаря Dict
+        /// <summary>
+        /// рандомный выбор РУССКОГО слова из словаря Dict
+        /// </summary>
+        /// <returns></returns>
+        public static string GetRusUnusedRandomWordOfDictionary()
         {
-            Random random = new Random();
-            int cont = random.Next(0, SizeOfRusUnusedWords);
-            RandomWord = EngUnusedWords[cont];
+            int cont = random.Next(0, RusUnusedWords.Count);
+            RandomWord = RusUnusedWords[cont];
             EngRusWord = false;
 
-            return Dict[RandomWord];
+            return DictionaryOfWord[RandomWord];
         }
 
-        public static string EngRandomWordOfDictionary() // рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
+        /// <summary>
+        /// рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
+        /// </summary>
+        /// <returns></returns>
+        public static string GetEngUnusedRandomWordOfDictionary()
         {
-            Random random = new Random();
-            int cont = random.Next(0, SizeOfEngUnusedWords);
+            int cont = random.Next(0, EngUnusedWords.Count);
             RandomWord = EngUnusedWords[cont];
             EngRusWord = true;
 
             return RandomWord;
+        }
+
+        public static void SetEngUnusedList()
+        {
+            EngUnusedWords.Clear();
+            foreach (var item in DictionaryOfWord.Keys)
+            {
+                EngUnusedWords.Add(item);
+            }
+
+        }
+
+        public static void SetRusUnusedList()
+        {
+            RusUnusedWords.Clear();
+            foreach (var item in DictionaryOfWord.Values)
+            {
+                RusUnusedWords.Add(item);
+            }
+
         }
     }
 }

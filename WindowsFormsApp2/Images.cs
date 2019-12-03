@@ -22,6 +22,10 @@ namespace WindowsFormsApp2
             InitializeComponent();
             //mainForm = new MainForm();
             wordStatisctics = new WordStatictics();
+            label2.Text = "";
+            label1.Text = "";
+            textBox1.ReadOnly = true;
+            textBox1.Visible = false;
         }
 
         private void PictureBox1_Click(object sender, EventArgs e)
@@ -32,8 +36,9 @@ namespace WindowsFormsApp2
         //1 - Animals, 2 - Hobbies
         private void Start_Click(object sender, EventArgs e)
         {
+
             //RandomWordInRichTextBox = WordDictionary.EngRandomWordOfDictionary();
-            string FileName = WordDictionary.EngRandomWordOfDictionary();
+            string FileName = WordDictionary.GetEngUnusedRandomWordOfDictionary();
             if (MainForm.NumberOfPictures == 1)
             {
                 Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
@@ -50,8 +55,9 @@ namespace WindowsFormsApp2
             Start.Text = "Далее";
 
             //Очистка лейбла и текстбокса
-            textBox1.Text = "";
-            label1.Text = "";
+            textBox1.ReadOnly = false;
+            textBox1.Visible = true;
+            label2.Text = "Введите то, что видите на картинке на английском";
             
         }
 
@@ -85,19 +91,19 @@ namespace WindowsFormsApp2
 
                         if (WordDictionary.EngRusWord)
                         {
-                            WordDictionary.SizeOfEngUnusedWords--;
-                            if (WordDictionary.SizeOfEngUnusedWords > 0)
-                                WordDictionary.EngUnusedWords.Remove(OriginalWord);
-                            else
-                                MessageBox.Show("Все английские слова изучены!");
+                            //WordDictionary.SizeOfEngUnusedWords--;
+                            //if (WordDictionary.SizeOfEngUnusedWords > 0)
+                            //    WordDictionary.EngUnusedWords.Remove(OriginalWord);
+                            //else
+                            //    MessageBox.Show("Все английские слова изучены!");
                         }
                         else
                         {
-                            WordDictionary.SizeOfRusUnusedWords--;
-                            if (WordDictionary.SizeOfRusUnusedWords > 1)
-                                WordDictionary.RusUnusedWords.Remove(OriginalWord);
-                            else
-                                MessageBox.Show("Все русские слова изучены!");
+                            //WordDictionary.SizeOfRusUnusedWords--;
+                            //if (WordDictionary.SizeOfRusUnusedWords > 1)
+                            //    WordDictionary.RusUnusedWords.Remove(OriginalWord);
+                            //else
+                            //    MessageBox.Show("Все русские слова изучены!");
                         }
                     }
                     else if (UserWord.Length == OriginalWord.Length)
@@ -146,7 +152,7 @@ namespace WindowsFormsApp2
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                WordDictionary.Dict.Clear();
+                WordDictionary.DictionaryOfWord.Clear();
                 WordDictionary.DictForCheck.Clear();
                 textBox1.Clear();
                 wordStatisctics.ClearCheckedListBox();

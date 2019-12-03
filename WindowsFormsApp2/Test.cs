@@ -38,10 +38,10 @@ namespace WindowsFormsApp2
 
             for (int i = 0; i < 5; i++)
             {
-                string randomWord = WordDictionary.EngRandomWordOfDictionary();
+                string randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
                 while (words.Contains(randomWord))
                 {
-                    randomWord = WordDictionary.EngRandomWordOfDictionary();
+                    randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
                 }
                 var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
                 radioButton.Text = randomWord;
@@ -53,7 +53,7 @@ namespace WindowsFormsApp2
 
             answer = words.ToList()[randomNumber];
 
-            richTextBox1.Text = "Выберите перевод слова: " + WordDictionary.Dict[answer];
+            richTextBox1.Text = "Выберите перевод слова: " + WordDictionary.DictionaryOfWord[answer];
 
         }
 
@@ -64,13 +64,20 @@ namespace WindowsFormsApp2
                 var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
                 if (radioButton.Checked)
                 {
-                    if (radioButton.Text == answer)
+                    try
                     {
-                        MessageBox.Show("ПРАВИЛЬНО!");
+                        if (radioButton.Text == answer)
+                        {
+                            MessageBox.Show("ПРАВИЛЬНО!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("НЕПРАВИЛЬНО!");
+                        }
                     }
-                    else
+                    finally
                     {
-                        MessageBox.Show("НЕПРАВИЛЬНО!");
+                        radioButton.Checked = false;
                     }
                 }
             }

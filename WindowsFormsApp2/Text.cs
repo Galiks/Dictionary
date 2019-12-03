@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp2
@@ -28,7 +22,7 @@ namespace WindowsFormsApp2
 
         private void AddText()
         {
-            richTextBox1.Text = "Введите перевод слова: " + WordDictionary.EngRandomWordOfDictionary();
+            richTextBox1.Text = "Введите перевод слова: " + WordDictionary.GetRusUnusedRandomWordOfDictionary();
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -61,19 +55,19 @@ namespace WindowsFormsApp2
 
                         if (WordDictionary.EngRusWord)
                         {
-                            WordDictionary.SizeOfEngUnusedWords--;
-                            if (WordDictionary.SizeOfEngUnusedWords > 0)
-                                WordDictionary.EngUnusedWords.Remove(OriginalWord);
-                            else
-                                MessageBox.Show("Все английские слова изучены!");
+                            //WordDictionary.SizeOfEngUnusedWords--;
+                            //if (WordDictionary.SizeOfEngUnusedWords > 0)
+                            //    WordDictionary.EngUnusedWords.Remove(OriginalWord);
+                            //else
+                            //    MessageBox.Show("Все английские слова изучены!");
                         }
                         else
                         {
-                            WordDictionary.SizeOfRusUnusedWords--;
-                            if (WordDictionary.SizeOfRusUnusedWords > 1)
-                                WordDictionary.RusUnusedWords.Remove(OriginalWord);
-                            else
-                                MessageBox.Show("Все русские слова изучены!");
+                            //WordDictionary.SizeOfRusUnusedWords--;
+                            //if (WordDictionary.SizeOfRusUnusedWords > 1)
+                            //    WordDictionary.RusUnusedWords.Remove(OriginalWord);
+                            //else
+                            //    MessageBox.Show("Все русские слова изучены!");
                         }
                     }
                     else if (UserWord.Length == OriginalWord.Length)
@@ -132,15 +126,15 @@ namespace WindowsFormsApp2
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                WordDictionary.Dict.Clear();
+                WordDictionary.DictionaryOfWord.Clear();
                 richTextBox1.Clear();
                 textBox1.Clear();
                 wordStatistics.ClearCheckedListBox();
-               WordDictionary.DictForCheck.Clear();
+                WordDictionary.DictForCheck.Clear();
                 label1.Text = "";
                 Start.Text = "Начать";
                 Hide();

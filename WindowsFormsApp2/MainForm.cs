@@ -149,7 +149,7 @@ namespace WindowsFormsApp2
 
         private void AnimalsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WordDictionary.Dict.Clear();
+            WordDictionary.DictionaryOfWord.Clear();
             string ChooseDict = "Animals.txt";
             WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: животные";
@@ -164,7 +164,7 @@ namespace WindowsFormsApp2
 
         private void HobbyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WordDictionary.Dict.Clear();
+            WordDictionary.DictionaryOfWord.Clear();
             string ChooseDict = "Hobby.txt";
             WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: хобби";
@@ -178,7 +178,7 @@ namespace WindowsFormsApp2
 
         private void UserDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WordDictionary.Dict.Clear();
+            WordDictionary.DictionaryOfWord.Clear();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 WordDictionary.AddToDict(openFileDialog1.FileName);
@@ -196,7 +196,7 @@ namespace WindowsFormsApp2
             Text f1 = new Text();
 
 
-            if (WordDictionary.Dict.Count != 0)
+            if (WordDictionary.DictionaryOfWord.Count != 0)
             {
                 f1.Show();
             }
@@ -213,7 +213,7 @@ namespace WindowsFormsApp2
             NumberOfQuiz = 2;
             Form imagesGame = new Images();
 
-            if (WordDictionary.Dict.Count != 0)
+            if (WordDictionary.DictionaryOfWord.Count != 0)
             {
                 imagesGame.Show();
             }
@@ -230,7 +230,7 @@ namespace WindowsFormsApp2
             NumberOfQuiz = 3;
             Form gaming = new Game();
 
-            if (WordDictionary.Dict.Count != 0)
+            if (WordDictionary.DictionaryOfWord.Count != 0)
             {
                 gaming.Show();
             }
@@ -270,7 +270,7 @@ namespace WindowsFormsApp2
 
         private void TestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (WordDictionary.Dict.Count != 0)
+            if (WordDictionary.DictionaryOfWord.Count != 0)
             {
                 Test test = new Test();
                 test.Show();

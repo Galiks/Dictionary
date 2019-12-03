@@ -40,7 +40,7 @@ namespace WindowsFormsApp2
         public void AddItemsToCheckedListBox()
         {
             checkedListBox1.Items.Clear();
-            foreach (var elem in WordDictionary.Dict)
+            foreach (var elem in WordDictionary.DictionaryOfWord)
             {
                 checkedListBox1.Items.Add(elem.Key);
             }
