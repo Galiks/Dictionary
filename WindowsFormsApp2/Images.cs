@@ -37,7 +37,6 @@ namespace WindowsFormsApp2
         private void Start_Click(object sender, EventArgs e)
         {
 
-            //RandomWordInRichTextBox = WordDictionary.EngRandomWordOfDictionary();
             string FileName = WordDictionary.GetEngUnusedRandomWordOfDictionary();
             if (MainForm.NumberOfPictures == 1)
             {
@@ -91,19 +90,25 @@ namespace WindowsFormsApp2
 
                         if (WordDictionary.EngRusWord)
                         {
-                            //WordDictionary.SizeOfEngUnusedWords--;
-                            //if (WordDictionary.SizeOfEngUnusedWords > 0)
-                            //    WordDictionary.EngUnusedWords.Remove(OriginalWord);
-                            //else
-                            //    MessageBox.Show("Все английские слова изучены!");
+                            if (WordDictionary.EngUnusedWords.Count > 0)
+                            {
+                                WordDictionary.EngUnusedWords.Remove(UserWord);
+                                if (WordDictionary.EngUnusedWords.Count == 0)
+                                {
+                                    FinishGame();
+                                }
+                            }
                         }
                         else
                         {
-                            //WordDictionary.SizeOfRusUnusedWords--;
-                            //if (WordDictionary.SizeOfRusUnusedWords > 1)
-                            //    WordDictionary.RusUnusedWords.Remove(OriginalWord);
-                            //else
-                            //    MessageBox.Show("Все русские слова изучены!");
+                            if (WordDictionary.RusUnusedWords.Count > 0)
+                            {
+                                WordDictionary.RusUnusedWords.Remove(UserWord);
+                                if (WordDictionary.EngUnusedWords.Count == 0)
+                                {
+                                    FinishGame(isEngWords: false);
+                                }
+                            }
                         }
                     }
                     else if (UserWord.Length == OriginalWord.Length)
@@ -147,6 +152,19 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void FinishGame(bool isEngWords = true)
+        {
+            this.Images_Load(new object(), new EventArgs());
+            if (isEngWords)
+            {
+                MessageBox.Show("Все английские слова изучены!", "Позравляем!");
+            }
+            else
+            {
+                MessageBox.Show("Все русские слова изучены!", "Позравляем!");
+            }
+        }
+
         private void Images_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -173,6 +191,7 @@ namespace WindowsFormsApp2
 
         private void Images_Load(object sender, EventArgs e)
         {
+            WordDictionary.SetEngUnusedList();
             wordStatisctics.AddItemsToCheckedListBox();
         }
     }

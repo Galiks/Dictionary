@@ -144,9 +144,13 @@ namespace WindowsFormsApp2
                             if (WordDictionary.RusUnusedWords.Count > 0)
                             {
                                 WordDictionary.RusUnusedWords.Remove(UserWord);
-                                if (WordDictionary.RusUnusedWords.Count == 0)
+                                if (WordDictionary.EngUnusedWords.Count == 0)
                                 {
-                                    MessageBox.Show("Все русские слова изучены!", "Позравляем!");
+                                    FinishGame(isEngWords: false);
+                                }
+                                else
+                                {
+                                    Begin_Click(sender, e);
                                 }
                             }
                         }
@@ -200,10 +204,17 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void FinishGame()
+        private void FinishGame(bool isEngWords = true)
         {
             this.Game_Load(new object(), new EventArgs());
-            MessageBox.Show("Все английские слова изучены!", "Позравляем!");
+            if (isEngWords)
+            {
+                MessageBox.Show("Все английские слова изучены!", "Позравляем!");
+            }
+            else
+            {
+                MessageBox.Show("Все русские слова изучены!", "Позравляем!");
+            }
         }
 
         private void Game_FormClosing(object sender, FormClosingEventArgs e)

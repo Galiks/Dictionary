@@ -7,7 +7,7 @@ namespace WindowsFormsApp2
 {
     public static class WordDictionary
     {
-        private static Random random;
+        private static readonly Random random;
 
         /// <summary>
         /// Основной контейнер, который содержит все слова
