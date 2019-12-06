@@ -19,9 +19,9 @@ namespace WindowsFormsApp2
         public MainForm()
         {
             InitializeComponent();
-            Image img = Image.FromFile(@"orig.gif");
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.Image = img;
+            //Image img = Image.FromFile(@"orig.gif");
+            //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            //pictureBox1.Image = img;
         }
 
         //private void Text_Click(object sender, EventArgs e)
@@ -99,6 +99,16 @@ namespace WindowsFormsApp2
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            richTextBox1.ReadOnly = true;
+            richTextBox1.Text = "Здравствуйте!" + Environment.NewLine + 
+                "Это приложение создано для того, чтобы пользователь смог выучить английские слова." + Environment.NewLine + 
+                "На данный момент доступно только 2 стандартных словаря: животные и хобби." + Environment.NewLine + 
+                "Пользователь может также добавить свои слова, выбрав его через окно выбора файла." + Environment.NewLine +
+                "В приложении присутствует 4 типа заданий:" + Environment.NewLine + 
+                "1. текстовый вариант," + Environment.NewLine + 
+                "2. вариант с картинками," + Environment.NewLine + 
+                "3. игра" + Environment.NewLine + 
+                "4. тест";
             label3.Text = "";
         }
 
@@ -149,7 +159,7 @@ namespace WindowsFormsApp2
 
         private void AnimalsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WordDictionary.DictionaryOfWord.Clear();
+            WordDictionary.DictionaryOfWords.Clear();
             string ChooseDict = "Animals.txt";
             WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: животные";
@@ -164,7 +174,7 @@ namespace WindowsFormsApp2
 
         private void HobbyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WordDictionary.DictionaryOfWord.Clear();
+            WordDictionary.DictionaryOfWords.Clear();
             string ChooseDict = "Hobby.txt";
             WordDictionary.AddToDict(ChooseDict);
             label3.Text = "В словарь добавлены слова на тему: хобби";
@@ -178,7 +188,7 @@ namespace WindowsFormsApp2
 
         private void UserDictionaryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WordDictionary.DictionaryOfWord.Clear();
+            WordDictionary.DictionaryOfWords.Clear();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 WordDictionary.AddToDict(openFileDialog1.FileName);
@@ -196,7 +206,7 @@ namespace WindowsFormsApp2
             Text f1 = new Text();
 
 
-            if (WordDictionary.DictionaryOfWord.Count != 0)
+            if (WordDictionary.DictionaryOfWords.Count != 0)
             {
                 f1.Show();
             }
@@ -213,7 +223,7 @@ namespace WindowsFormsApp2
             NumberOfQuiz = 2;
             Form imagesGame = new Images();
 
-            if (WordDictionary.DictionaryOfWord.Count != 0)
+            if (WordDictionary.DictionaryOfWords.Count != 0)
             {
                 imagesGame.Show();
             }
@@ -230,7 +240,7 @@ namespace WindowsFormsApp2
             NumberOfQuiz = 3;
             Form gaming = new Game();
 
-            if (WordDictionary.DictionaryOfWord.Count != 0)
+            if (WordDictionary.DictionaryOfWords.Count != 0)
             {
                 gaming.Show();
             }
@@ -244,6 +254,7 @@ namespace WindowsFormsApp2
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             Application.Exit();
         }
 
@@ -270,7 +281,7 @@ namespace WindowsFormsApp2
 
         private void TestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (WordDictionary.DictionaryOfWord.Count != 0)
+            if (WordDictionary.DictionaryOfWords.Count != 0)
             {
                 Test test = new Test();
                 test.Show();
@@ -280,6 +291,11 @@ namespace WindowsFormsApp2
                 label3.Text = "Выберите словарь!";
                 label3.ForeColor = Color.DarkRed;
             }
+        }
+
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

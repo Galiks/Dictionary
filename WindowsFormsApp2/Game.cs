@@ -12,9 +12,6 @@ namespace WindowsFormsApp2
         private int scoreWrong = 0;
 
         private string gameWord;
-
-        private string FileName;
-
         private int time; // переменная, используемая для того, чтобы задать время
 
         private readonly WordStatictics wordStatistics;
@@ -123,7 +120,7 @@ namespace WindowsFormsApp2
                         dataGridView1[0, 0].Value = scoreRight;
                         label2.ForeColor = Color.Green;
                         label2.Refresh();
-                        var testList = WordDictionary.EngUnusedWords;
+                        //var testList = WordDictionary.EngUnusedWords;
                         if (WordDictionary.EngRusWord)
                         {
                             if (WordDictionary.EngUnusedWords.Count > 0)
@@ -222,10 +219,9 @@ namespace WindowsFormsApp2
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                WordDictionary.DictionaryOfWord.Clear();
+                WordDictionary.DictionaryOfWords.Clear();
                 WordDictionary.DictForCheck.Clear();
                 gameWord = null;
-                FileName = null;
                 //timer1.Enabled = Enabled;
                 //timer1.Stop();
                 timer1 = null;
@@ -274,9 +270,9 @@ namespace WindowsFormsApp2
         {
             try
             {
+                string FileName = gameWord;
                 if (MainForm.NumberOfPictures == 1)
                 {
-                    string FileName = WordDictionary.RandomWord;
                     Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox1.Image = img;
@@ -284,7 +280,6 @@ namespace WindowsFormsApp2
 
                 else if (MainForm.NumberOfPictures == 2)
                 {
-                    FileName = WordDictionary.RandomWord;
                     Image img = Image.FromFile(@"Pictures\Hobbies\" + FileName + ".jpg");
                     pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox1.Image = img;

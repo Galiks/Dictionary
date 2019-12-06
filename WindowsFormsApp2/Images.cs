@@ -12,16 +12,15 @@ namespace WindowsFormsApp2
 {
     public partial class Images : Form
     {
-        //private readonly MainForm mainForm;
-        private readonly WordStatictics wordStatisctics;
-        //private string RandomWordInRichTextBox;
+        private readonly WordStatictics wordStatistics;
 
+        private string imageWord;
 
         public Images()
         {
             InitializeComponent();
             //mainForm = new MainForm();
-            wordStatisctics = new WordStatictics();
+            wordStatistics = new WordStatictics();
             label2.Text = "";
             label1.Text = "";
             textBox1.ReadOnly = true;
@@ -37,17 +36,17 @@ namespace WindowsFormsApp2
         private void Start_Click(object sender, EventArgs e)
         {
 
-            string FileName = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+            imageWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
             if (MainForm.NumberOfPictures == 1)
             {
-                Image img = Image.FromFile(@"Pictures\Animals\" + FileName + ".jpg");
+                Image img = Image.FromFile(@"Pictures\Animals\" + imageWord + ".jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.Image = img;
             }
 
             else if (MainForm.NumberOfPictures == 2)
             {
-                Image img = Image.FromFile(@"Pictures\Hobbies\" + FileName + ".jpg");
+                Image img = Image.FromFile(@"Pictures\Hobbies\" + imageWord + ".jpg");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.Image = img;
             }
@@ -78,11 +77,11 @@ namespace WindowsFormsApp2
                 if (textBox1.TextLength > 0)
                 {
                     string UserWord = textBox1.Text;
-                    string OriginalWord = WordDictionary.RandomWord;
+                    string OriginalWord = imageWord;
 
                     if (UserWord == OriginalWord)
                     {
-                        wordStatisctics.CheckWordFromForm1(OriginalWord);
+                        wordStatistics.CheckWordFromForm1(OriginalWord);
                         WordDictionary.DictForCheck[OriginalWord] = true;
                         label1.Text = "Right!";
                         label1.ForeColor = Color.Green;
@@ -170,10 +169,10 @@ namespace WindowsFormsApp2
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                WordDictionary.DictionaryOfWord.Clear();
+                WordDictionary.DictionaryOfWords.Clear();
                 WordDictionary.DictForCheck.Clear();
                 textBox1.Clear();
-                wordStatisctics.ClearCheckedListBox();
+                wordStatistics.ClearCheckedListBox();
                 Start.Text = "Начать";
                 Hide();
                 if (pictureBox1.Image != null)
@@ -186,13 +185,13 @@ namespace WindowsFormsApp2
 
         private void ShowWordStatics_Click(object sender, EventArgs e)
         {
-            wordStatisctics.Show();
+            wordStatistics.Show();
         }
 
         private void Images_Load(object sender, EventArgs e)
         {
             WordDictionary.SetEngUnusedList();
-            wordStatisctics.AddItemsToCheckedListBox();
+            wordStatistics.AddItemsToCheckedListBox();
         }
     }
 }

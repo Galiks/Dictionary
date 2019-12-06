@@ -12,6 +12,7 @@ namespace WindowsFormsApp2
         //private string RandomWordInRichTextBox;
 
         private readonly WordStatictics wordStatistics;
+        private string textWord;
 
         public Text()
         {
@@ -22,7 +23,8 @@ namespace WindowsFormsApp2
 
         private void AddText()
         {
-            richTextBox1.Text = "Введите перевод слова: " + WordDictionary.GetRusUnusedRandomWordOfDictionary();
+            textWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+            richTextBox1.Text = "Введите перевод слова: " + WordDictionary.GetRusWordByEngWord(textWord);
         }
 
         private int MistakeCounter(string UserWord, string Pattern)
@@ -42,8 +44,8 @@ namespace WindowsFormsApp2
             {
                 if (textBox1.TextLength > 0)
                 {
-                    string UserWord = textBox1.Text;
-                    string OriginalWord = WordDictionary.RandomWord;
+                    string UserWord = textBox1.Text.ToLower();
+                    string OriginalWord = textWord;
 
                     if (UserWord == OriginalWord)
                     {
@@ -132,6 +134,8 @@ namespace WindowsFormsApp2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            WordDictionary.SetRusUnusedList();
+            WordDictionary.SetEngUnusedList();
             wordStatistics.AddItemsToCheckedListBox();
         }
 
@@ -149,7 +153,7 @@ namespace WindowsFormsApp2
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                WordDictionary.DictionaryOfWord.Clear();
+                WordDictionary.DictionaryOfWords.Clear();
                 richTextBox1.Clear();
                 textBox1.Clear();
                 wordStatistics.ClearCheckedListBox();

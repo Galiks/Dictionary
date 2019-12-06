@@ -49,9 +49,8 @@
             this.userDictionaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -143,28 +142,28 @@
             // textToolStripMenuItem
             // 
             this.textToolStripMenuItem.Name = "textToolStripMenuItem";
-            this.textToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.textToolStripMenuItem.Text = "Текстовый";
             this.textToolStripMenuItem.Click += new System.EventHandler(this.TextToolStripMenuItem_Click);
             // 
             // imageToolStripMenuItem
             // 
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
-            this.imageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.imageToolStripMenuItem.Text = "Картинки";
             this.imageToolStripMenuItem.Click += new System.EventHandler(this.ImageToolStripMenuItem_Click);
             // 
             // gameToolStripMenuItem
             // 
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
-            this.gameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.gameToolStripMenuItem.Text = "Игра";
             this.gameToolStripMenuItem.Click += new System.EventHandler(this.GameToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.testToolStripMenuItem.Text = "Тест";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.TestToolStripMenuItem_Click);
             // 
@@ -181,21 +180,21 @@
             // animalsToolStripMenuItem
             // 
             this.animalsToolStripMenuItem.Name = "animalsToolStripMenuItem";
-            this.animalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.animalsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.animalsToolStripMenuItem.Text = "Животные";
             this.animalsToolStripMenuItem.Click += new System.EventHandler(this.AnimalsToolStripMenuItem_Click);
             // 
             // hobbyToolStripMenuItem
             // 
             this.hobbyToolStripMenuItem.Name = "hobbyToolStripMenuItem";
-            this.hobbyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hobbyToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.hobbyToolStripMenuItem.Text = "Хобби";
             this.hobbyToolStripMenuItem.Click += new System.EventHandler(this.HobbyToolStripMenuItem_Click);
             // 
             // userDictionaryToolStripMenuItem
             // 
             this.userDictionaryToolStripMenuItem.Name = "userDictionaryToolStripMenuItem";
-            this.userDictionaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userDictionaryToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.userDictionaryToolStripMenuItem.Text = "Свой словарь";
             this.userDictionaryToolStripMenuItem.Click += new System.EventHandler(this.UserDictionaryToolStripMenuItem_Click);
             // 
@@ -213,14 +212,14 @@
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // pictureBox1
+            // richTextBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(283, 170);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
+            this.richTextBox1.Location = new System.Drawing.Point(15, 53);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(269, 164);
+            this.richTextBox1.TabIndex = 12;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // MainForm
             // 
@@ -228,7 +227,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 287);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
@@ -242,7 +241,6 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,8 +264,8 @@
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

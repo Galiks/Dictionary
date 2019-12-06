@@ -24,7 +24,7 @@ namespace WindowsFormsApp2
 
         private void Test_Load(object sender, EventArgs e)
         {
-
+            WordDictionary.SetEngUnusedList();
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
@@ -36,24 +36,51 @@ namespace WindowsFormsApp2
         {
             words.Clear();
 
-            for (int i = 0; i < 5; i++)
+            int count = WordDictionary.DictionaryOfWords.Count;
+            int maxCountForRandom = 5;
+
+            if (count > 5)
             {
-                string randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
-                while (words.Contains(randomWord))
+                for (int i = 0; i < 5; i++)
                 {
-                    randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+                    string randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+                    while (words.Contains(randomWord))
+                    {
+                        randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+                    }
+                    var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                    radioButton.Text = randomWord;
+                    words.Add(randomWord);
+                } 
+            }
+            else
+            {
+                maxCountForRandom = count;
+                for (int i = 0; i < count; i++)
+                {
+                    string randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+                    while (words.Contains(randomWord))
+                    {
+                        randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+                    }
+                    var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                    radioButton.Text = randomWord;
+                    words.Add(randomWord);
                 }
-                var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
-                radioButton.Text = randomWord;
-                words.Add(randomWord);
+
+                for (int i = count; i < 5; i++)
+                {
+                    var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                    radioButton.Visible = false;
+                }
             }
 
 
-            int randomNumber = Random.Next(0, 5);
+            int randomNumber = Random.Next(0, maxCountForRandom);
 
             answer = words.ToList()[randomNumber];
 
-            richTextBox1.Text = "Выберите перевод слова: " + WordDictionary.DictionaryOfWord[answer];
+            richTextBox1.Text = "Выберите перевод слова: " + WordDictionary.DictionaryOfWords[answer];
 
         }
 
