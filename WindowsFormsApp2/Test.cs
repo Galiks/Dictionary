@@ -20,26 +20,30 @@ namespace WindowsFormsApp2
         {
             InitializeComponent();
             maxQuestions = WordDictionary.Size;
-            label1.Text = counter.ToString();
             label2.Text = " / ";
             label3.Text = maxQuestions.ToString();
             words = new HashSet<string>();
             random = new Random();
             rightWords = new List<string>();
             wrongWords = new List<string>();
+        }
+
+        private void Test_Load(object sender, EventArgs e)
+        {
+            rightWords.Clear();
+            wrongWords.Clear();
+            counter = 0;
+            label1.Text = counter.ToString();
+            WordDictionary.SetEngUnusedList();
+            button1.Enabled = true;
+            AnswerButton.Enabled = false;
+            richTextBox1.Text = "";
 
             for (int i = 0; i < 5; i++)
             {
                 var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
                 radioButton.Visible = false;
             }
-        }
-
-        private void Test_Load(object sender, EventArgs e)
-        {
-            counter = 0;
-            WordDictionary.SetEngUnusedList();
-            button1.Enabled = true;
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
@@ -65,7 +69,7 @@ namespace WindowsFormsApp2
             {
                 SetQuestionsForMiniTest(countOfWordsInDictionary);
             }
-
+            AnswerButton.Enabled = true;
             button1.Enabled = false;
         }
 
@@ -122,15 +126,15 @@ namespace WindowsFormsApp2
 
             if (!words.Contains(rightAnswer))
             {
-                AddAnswerToList(); 
+                AddAnswerToList();
             }
         }
 
         private void Finish()
         {
-            Test_Load(new object(), new EventArgs());
             results = new Results(rightWords, wrongWords, countOfQuestions);
             results.Show();
+            Test_Load(new object(), new EventArgs());
         }
 
         private void AnswerButton_Click(object sender, EventArgs e)
@@ -140,33 +144,32 @@ namespace WindowsFormsApp2
                 var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
                 if (radioButton.Checked)
                 {
-                    try
+
+                    if (radioButton.Text == rightAnswer)
                     {
-                        if (radioButton.Text == rightAnswer)
-                        {
-                            rightWords.Add(rightAnswer);
-                        }
-                        else
-                        {
-                            wrongWords.Add(rightAnswer);
-                        }
+                        rightWords.Add(rightAnswer);
                     }
-                    finally
+                    else
+                    {
+                        wrongWords.Add(rightAnswer);
+                    }
                     {
                         WordDictionary.EngUnusedWords.Remove(rightAnswer);
+                        counter += 1;
+                        label1.Text = counter.ToString();
+                        radioButton.Checked = false;
 
                         if (WordDictionary.EngUnusedWords.Count == 0)
                         {
                             Finish();
+                            return;
                         }
-
-                        counter += 1;
-                        label1.Text = counter.ToString();
-                        radioButton.Checked = false;
-                        Button1_Click(sender, e);
+                        
+                        continue;
                     }
                 }
             }
+            Button1_Click(sender, e);
         }
 
         private void Test_FormClosed(object sender, FormClosedEventArgs e)

@@ -51,7 +51,7 @@ namespace WindowsFormsApp2
         {
             int countOfRows = rightWords.Count >= wrongWords.Count ? rightWords.Count : wrongWords.Count;
 
-            for (int i = 0; i < countOfRows; i++)
+            for (int i = 0; i < countOfRows - 1; i++)
             {
                 dataGridView1.Rows.Add();
             }
