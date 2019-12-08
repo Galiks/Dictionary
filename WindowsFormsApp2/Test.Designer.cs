@@ -171,6 +171,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Name = "Test";
             this.Text = "Тест";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Test_FormClosed);
             this.Load += new System.EventHandler(this.Test_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

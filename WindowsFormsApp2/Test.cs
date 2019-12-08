@@ -7,24 +7,33 @@ namespace WindowsFormsApp2
 {
     public partial class Test : Form
     {
+        private const int countOfQuestions = 5;
         private readonly int maxQuestions;
-        private HashSet<string> words;
-        private Random Random { get; set; }
-        private string answer;
+        private readonly HashSet<string> words;
+        private readonly Random random;
+        private string rightAnswer;
+        private int counter;
+        private Results results;
+        private readonly List<string> rightWords;
+        private readonly List<string> wrongWords;
         public Test()
         {
             InitializeComponent();
             maxQuestions = WordDictionary.Size;
-            label1.Text = "0";
+            label1.Text = counter.ToString();
             label2.Text = " / ";
             label3.Text = maxQuestions.ToString();
             words = new HashSet<string>();
-            Random = new Random();
+            random = new Random();
+            rightWords = new List<string>();
+            wrongWords = new List<string>();
         }
 
         private void Test_Load(object sender, EventArgs e)
         {
+            counter = 0;
             WordDictionary.SetEngUnusedList();
+            button1.Enabled = true;
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
@@ -36,52 +45,85 @@ namespace WindowsFormsApp2
         {
             words.Clear();
 
-            int count = WordDictionary.DictionaryOfWords.Count;
-            int maxCountForRandom = 5;
+            rightAnswer = WordDictionary.GetEngUnusedRandomWordFromDictionary();
 
-            if (count > 5)
+            richTextBox1.Text = "Выберите перевод слова: " + WordDictionary.DictionaryOfWords[rightAnswer];
+
+            int countOfWordsInDictionary = WordDictionary.DictionaryOfWords.Count;
+
+            if (countOfWordsInDictionary >= countOfQuestions)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    string randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
-                    while (words.Contains(randomWord))
-                    {
-                        randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
-                    }
-                    var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
-                    radioButton.Text = randomWord;
-                    words.Add(randomWord);
-                } 
+                SetQuestionsForTest();
             }
             else
             {
-                maxCountForRandom = count;
-                for (int i = 0; i < count; i++)
-                {
-                    string randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
-                    while (words.Contains(randomWord))
-                    {
-                        randomWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
-                    }
-                    var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
-                    radioButton.Text = randomWord;
-                    words.Add(randomWord);
-                }
-
-                for (int i = count; i < 5; i++)
-                {
-                    var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
-                    radioButton.Visible = false;
-                }
+                SetQuestionsForMiniTest(countOfWordsInDictionary);
             }
 
+            button1.Enabled = false;
+        }
 
-            int randomNumber = Random.Next(0, maxCountForRandom);
+        private void SetQuestionsForMiniTest(int countOfWordsInDictionary)
+        {
+            for (int i = 0; i < countOfWordsInDictionary; i++)
+            {
+                string randomWord = WordDictionary.GetEngRandomWordFromDictionary();
+                RadioButton randomRadioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                randomRadioButton.Text = randomWord;
+                words.Add(randomWord);
+            }
 
-            answer = words.ToList()[randomNumber];
+            AddAnswerToList(); if (!words.Contains(rightAnswer))
+            {
+                AddAnswerToList();
+            }
 
-            richTextBox1.Text = "Выберите перевод слова: " + WordDictionary.DictionaryOfWords[answer];
+            SetVisibleForUnusedRadioButtons(countOfWordsInDictionary);
+        }
 
+        private void AddAnswerToList()
+        {
+            int randomNumber = random.Next(0, words.Count);
+            var radioButton = this.Controls.Find("radioButton" + (randomNumber + 1), true).FirstOrDefault() as RadioButton;
+            radioButton.Text = rightAnswer;
+            words.ToList()[randomNumber] = rightAnswer;
+        }
+
+        private void SetVisibleForUnusedRadioButtons(int countOfWordsInDictionary)
+        {
+            for (int i = countOfWordsInDictionary; i < 5; i++)
+            {
+                var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                radioButton.Visible = false;
+            }
+        }
+
+        private void SetQuestionsForTest()
+        {
+            for (int i = 0; i < countOfQuestions; i++)
+            {
+                string randomWord = WordDictionary.GetEngRandomWordFromDictionary();
+                while (words.Contains(randomWord))
+                {
+                    randomWord = WordDictionary.GetEngRandomWordFromDictionary();
+                }
+                var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                radioButton.Text = randomWord;
+                words.Add(randomWord);
+            }
+
+            if (!words.Contains(rightAnswer))
+            {
+                AddAnswerToList(); 
+            }
+        }
+
+        private void Finish()
+        {
+            //MessageBox.Show("Вы ответили правильно на: " + GetAssessment());
+            Test_Load(new object(), new EventArgs());
+            results = new Results(rightWords, wrongWords, countOfQuestions);
+            results.Show();
         }
 
         private void AnswerButton_Click(object sender, EventArgs e)
@@ -93,21 +135,37 @@ namespace WindowsFormsApp2
                 {
                     try
                     {
-                        if (radioButton.Text == answer)
+                        if (radioButton.Text == rightAnswer)
                         {
-                            MessageBox.Show("ПРАВИЛЬНО!");
+                            rightWords.Add(rightAnswer);
                         }
                         else
                         {
-                            MessageBox.Show("НЕПРАВИЛЬНО!");
+                            wrongWords.Add(rightAnswer);
                         }
                     }
                     finally
                     {
+                        WordDictionary.EngUnusedWords.Remove(rightAnswer);
+
+                        if (WordDictionary.EngUnusedWords.Count == 0)
+                        {
+                            Finish();
+                        }
+
+                        counter += 1;
+                        label1.Text = counter.ToString();
                         radioButton.Checked = false;
+                        Button1_Click(sender, e);
                     }
                 }
             }
+        }
+
+        private void Test_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+            results?.Dispose();
         }
     }
 }

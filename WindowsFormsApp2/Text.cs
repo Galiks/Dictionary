@@ -23,7 +23,7 @@ namespace WindowsFormsApp2
 
         private void AddText()
         {
-            textWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+            textWord = WordDictionary.GetEngUnusedRandomWordFromDictionary();
             richTextBox1.Text = "Введите перевод слова: " + WordDictionary.GetRusWordByEngWord(textWord);
         }
 

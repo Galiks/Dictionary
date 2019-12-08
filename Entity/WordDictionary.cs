@@ -26,16 +26,7 @@ namespace WindowsFormsApp2
 
         public static Dictionary<string, bool> DictForCheck;// вместо сериализации
 
-        //public static int SizeOfEngUnusedWords = 0;
-        //public static int SizeOfRusUnusedWords = 0;
-
         public static bool EngRusWord = true;
-
-        ///// <summary>
-        ///// рандомное слово, которое будет выведено в методе RandomWordInDictionary
-        ///// </summary>
-        //public static string RandomWord;
-        //public static List<string> GoneWords = new List<string>();
 
         public static int Size //рамерность словаря Dict
         {
@@ -70,8 +61,6 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                //SizeOfEngUnusedWords = DictForCheck.Count;
-                //SizeOfRusUnusedWords = DictForCheck.Count;
             }
         }
 
@@ -97,7 +86,7 @@ namespace WindowsFormsApp2
         /// рандомный выбор РУССКОГО слова из словаря Dict
         /// </summary>
         /// <returns></returns>
-        public static string GetRusUnusedRandomWordOfDictionary()
+        public static string GetRusUnusedRandomWordFromDictionary()
         {
             int cont = random.Next(0, RusUnusedWords.Count);
             string randomWord = RusUnusedWords[cont];
@@ -110,7 +99,7 @@ namespace WindowsFormsApp2
         /// рандомный выбор АНГЛИЙСКОГО слова из словаря Dict
         /// </summary>
         /// <returns></returns>
-        public static string GetEngUnusedRandomWordOfDictionary()
+        public static string GetEngUnusedRandomWordFromDictionary()
         {
             int cont = random.Next(0, EngUnusedWords.Count);
             string randomWord = EngUnusedWords[cont];
@@ -146,6 +135,18 @@ namespace WindowsFormsApp2
         public static string GetRusWordByEngWord(string key)
         {
             return DictionaryOfWords.First(x => x.Key == key).Value;
+        }
+
+        public static string GetEngRandomWordFromDictionary()
+        {
+            int cont = random.Next(0, DictionaryOfWords.Count);
+            return DictionaryOfWords.ElementAt(cont).Key;
+        }
+
+        public static string GetRusRandomWordFromDictionary()
+        {
+            int cont = random.Next(0, DictionaryOfWords.Count);
+            return DictionaryOfWords.ElementAt(cont).Value;
         }
     }
 }

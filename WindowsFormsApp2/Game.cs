@@ -30,14 +30,9 @@ namespace WindowsFormsApp2
 
         private void AddTextToRichTextBox()
         {
-            gameWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+            gameWord = WordDictionary.GetEngUnusedRandomWordFromDictionary();
             richTextBox1.AppendText("Введите слово полностью: ");
             richTextBox1.AppendText(new string(GetBrokenWord()));
-
-            //for (int i = 0; i < BrokenWord.Length; i++)
-            //{
-            //    richTextBox1.AppendText(BrokenWord[i].ToString());
-            //}
         }
 
         private char[] GetBrokenWord()
@@ -230,6 +225,7 @@ namespace WindowsFormsApp2
                 textBox1.Clear();
                 label2.Text = "";
                 wordStatistics.ClearCheckedListBox();
+                wordStatistics.Dispose();
                 Begin.Text = "Начать";
                 this.Dispose();
                 if (pictureBox1.Image != null)

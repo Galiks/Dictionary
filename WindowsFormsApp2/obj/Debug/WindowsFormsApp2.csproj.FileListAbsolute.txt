@@ -67,3 +67,4 @@ E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\obj\Debug\Window
 E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.csproj.CopyComplete
 E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
 E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb
+E:\Документы\GitHub\Galiks\Dictionary\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Results.resources

@@ -23,7 +23,7 @@ namespace WindowsFormsApp2
 
         private void OutputDictcs_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void OutputDictcs_FormClosing(object sender, FormClosingEventArgs e)

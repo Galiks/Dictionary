@@ -36,7 +36,7 @@ namespace WindowsFormsApp2
         private void Start_Click(object sender, EventArgs e)
         {
 
-            imageWord = WordDictionary.GetEngUnusedRandomWordOfDictionary();
+            imageWord = WordDictionary.GetEngUnusedRandomWordFromDictionary();
             if (MainForm.NumberOfPictures == 1)
             {
                 Image img = Image.FromFile(@"Pictures\Animals\" + imageWord + ".jpg");
