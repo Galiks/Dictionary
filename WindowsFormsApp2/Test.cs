@@ -27,6 +27,12 @@ namespace WindowsFormsApp2
             random = new Random();
             rightWords = new List<string>();
             wrongWords = new List<string>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                radioButton.Visible = false;
+            }
         }
 
         private void Test_Load(object sender, EventArgs e)
@@ -69,6 +75,7 @@ namespace WindowsFormsApp2
             {
                 string randomWord = WordDictionary.GetEngRandomWordFromDictionary();
                 RadioButton randomRadioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
+                randomRadioButton.Visible = true;
                 randomRadioButton.Text = randomWord;
                 words.Add(randomWord);
             }
@@ -109,6 +116,7 @@ namespace WindowsFormsApp2
                 }
                 var radioButton = this.Controls.Find("radioButton" + (i + 1), true).FirstOrDefault() as RadioButton;
                 radioButton.Text = randomWord;
+                radioButton.Visible = true;
                 words.Add(randomWord);
             }
 
@@ -120,7 +128,6 @@ namespace WindowsFormsApp2
 
         private void Finish()
         {
-            //MessageBox.Show("Вы ответили правильно на: " + GetAssessment());
             Test_Load(new object(), new EventArgs());
             results = new Results(rightWords, wrongWords, countOfQuestions);
             results.Show();
@@ -166,6 +173,11 @@ namespace WindowsFormsApp2
         {
             this.Dispose();
             results?.Dispose();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
